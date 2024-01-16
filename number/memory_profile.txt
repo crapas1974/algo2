@@ -1,0 +1,79 @@
+Filename: prime_numbers.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    26     19.0 MiB     19.0 MiB           1   @profile
+    27                                         def prime_numbers(n):
+    28     19.0 MiB      0.0 MiB           1       if n < 2:
+    29                                                 return []
+    30     19.0 MiB      0.0 MiB           1       sieve = [True] * (n + 1)
+    31     19.0 MiB      0.0 MiB           1       sieve[0] = False
+    32     19.0 MiB      0.0 MiB           1       sieve[1] = False
+    33     19.0 MiB      0.0 MiB          31       for i in range(2, int(n ** 0.5) + 1):
+    34     19.0 MiB      0.0 MiB          30           if sieve[i] == True:
+    35     19.0 MiB      0.0 MiB        1560               for j in range(i + i, n + 1, i):
+    36     19.0 MiB      0.0 MiB        1549                   sieve[j] = False
+    37     19.0 MiB      0.0 MiB        1002       return [i for i in range(2, n + 1) if sieve[i] == True]
+
+
+168
+[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 277, 281, 283, 293, 307, 311, 313, 317, 331, 337, 347, 349, 353, 359, 367, 373, 379, 383, 389, 397, 401, 409, 419, 421, 431, 433, 439, 443, 449, 457, 461, 463, 467, 479, 487, 491, 499, 503, 509, 521, 523, 541, 547, 557, 563, 569, 571, 577, 587, 593, 599, 601, 607, 613, 617, 619, 631, 641, 643, 647, 653, 659, 661, 673, 677, 683, 691, 701, 709, 719, 727, 733, 739, 743, 751, 757, 761, 769, 773, 787, 797, 809, 811, 821, 823, 827, 829, 839, 853, 857, 859, 863, 877, 881, 883, 887, 907, 911, 919, 929, 937, 941, 947, 953, 967, 971, 977, 983, 991, 997]
+1755
+Filename: prime_numbers.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    26     19.0 MiB     19.0 MiB           1   @profile
+    27                                         def prime_numbers(n):
+    28     19.0 MiB      0.0 MiB           1       if n < 2:
+    29                                                 return []
+    30     19.0 MiB      0.0 MiB           1       sieve = [True] * (n + 1)
+    31     19.0 MiB      0.0 MiB           1       sieve[0] = False
+    32     19.0 MiB      0.0 MiB           1       sieve[1] = False
+    33     19.0 MiB      0.0 MiB          31       for i in range(2, int(n ** 0.5) + 1):
+    34     19.0 MiB      0.0 MiB          30           if sieve[i] == True:
+    35     19.0 MiB      0.0 MiB        1560               for j in range(i + i, n + 1, i):
+    36     19.0 MiB      0.0 MiB        1549                   sieve[j] = False
+    37     19.0 MiB      0.0 MiB        1002       return [i for i in range(2, n + 1) if sieve[i] == True]
+
+
+Filename: prime_numbers.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    40     19.0 MiB     19.0 MiB           1   @profile
+    41                                         def prime_numbers2(n):
+    42     19.0 MiB      0.0 MiB           1       start = 0
+    43     19.0 MiB      0.0 MiB           1       result = []
+    44                                             while True:
+    45     19.0 MiB      0.0 MiB           1           if start + step_size > n:
+    46     19.0 MiB      0.0 MiB           1               result = prime_numbers_with_segment(start, n, result)
+    47     19.0 MiB      0.0 MiB           1               break
+    48                                                 result = prime_numbers_with_segment(start, start + step_size, result)
+    49                                                 start += step_size
+    50     19.0 MiB      0.0 MiB           1       return result
+
+
+소요 시간 : 0.1023108959197998 초
+168
+Filename: prime_numbers.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    90     19.0 MiB     19.0 MiB           1   @profile
+    91                                         def prime_numbers3(n):
+    92     19.0 MiB      0.0 MiB           1       start = 0
+    93     19.0 MiB      0.0 MiB           1       result = []
+    94                                             while True:
+    95     19.0 MiB      0.0 MiB           1           if start + step_size > n:
+    96     19.0 MiB      0.0 MiB           1               prime_numbers_with_segment_new(start, n, result)
+    97     19.0 MiB      0.0 MiB           1               break
+    98                                                 prime_numbers_with_segment_new(start, start + step_size, result)
+    99                                                 start += step_size
+   100     19.0 MiB      0.0 MiB           1       return result
+
+
+소요 시간 : 0.005015134811401367 초
+168
+[1, 2, 3, 4, 5]
+0c04

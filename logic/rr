@@ -1,0 +1,174 @@
+testcase 1
+    입력 - A'
+    변환 결과 - (A@A)
+    진리표
+        A 결과
+        F T
+        T F
+
+testcase 2
+    입력 - AB
+    변환 결과 - ((A@B)@(A@B))
+    진리표
+        A B 결과
+        F F F
+        F T F
+        T F F
+        T T T
+
+testcase 3
+    입력 - A+B
+    변환 결과 - ((A@A)@(B@B))
+    진리표
+        A B 결과
+        F F F
+        F T T
+        T F T
+        T T T
+
+testcase 4
+    입력 - A'A
+    변환 결과 - (((A@A)@A)@((A@A)@A))
+    진리표
+        A 결과
+        F F
+        T F
+
+testcase 5
+    입력 - A'+A
+    변환 결과 - (((A@A)@(A@A))@(A@A))
+    진리표
+        A 결과
+        F T
+        T T
+
+testcase 6
+    입력 - A'B'
+    변환 결과 - (((A@A)@(B@B))@((A@A)@(B@B)))
+    진리표
+        A B 결과
+        F F T
+        F T F
+        T F F
+        T T F
+
+testcase 7
+    입력 - A+B'*C
+    변환 결과 - ((((A@A)@((B@B)@(B@B)))@C)@(((A@A)@((B@B)@(B@B)))@C))
+    진리표
+        A B * C 결과
+        F F F F F
+        F F F T T
+        F F T F F
+        F F T T T
+        F T F F F
+        F T F T F
+        F T T F F
+        F T T T F
+        T F F F F
+        T F F T T
+        T F T F F
+        T F T T T
+        T T F F F
+        T T F T T
+        T T T F F
+        T T T T T
+
+testcase 8
+    입력 - (AB)(CD)
+    변환 결과 - ((((A@B)@(A@B))@((C@D)@(C@D)))@(((A@B)@(A@B))@((C@D)@(C@D))))
+    진리표
+        A B C D 결과
+        F F F F F
+        F F F T F
+        F F T F F
+        F F T T F
+        F T F F F
+        F T F T F
+        F T T F F
+        F T T T F
+        T F F F F
+        T F F T F
+        T F T F F
+        T F T T F
+        T T F F F
+        T T F T F
+        T T T F F
+        T T T T T
+
+testcase 9
+    입력 - (A+B)C(D+B)
+    변환 결과 - ((((((A@A)@(B@B))@C)@(((A@A)@(B@B))@C))@((D@D)@(B@B)))@(((((A@A)@(B@B))@C)@(((A@A)@(B@B))@C))@((D@D)@(B@B))))
+    진리표
+        A B C D 결과
+        F F F F F
+        F F F T F
+        F F T F F
+        F F T T F
+        F T F F F
+        F T F T F
+        F T T F T
+        F T T T T
+        T F F F F
+        T F F T F
+        T F T F F
+        T F T T T
+        T T F F F
+        T T F T F
+        T T T F T
+        T T T T T
+
+testcase 10
+    입력 - (A'B')'
+    변환 결과 - ((((A@A)@(B@B))@((A@A)@(B@B)))@(((A@A)@(B@B))@((A@A)@(B@B))))
+    진리표
+        A B 결과
+        F F F
+        F T T
+        T F T
+        T T T
+
+testcase 11
+    입력 - (A'+B)''+(CD'(B'+A')')'
+    변환 결과 - (((((((A@A)@(A@A))@(B@B))@(((A@A)@(A@A))@(B@B)))@((((A@A)@(A@A))@(B@B))@(((A@A)@(A@A))@(B@B))))@(((((A@A)@(A@A))@(B@B))@(((A@A)@(A@A))@(B@B)))@((((A@A)@(A@A))@(B@B))@(((A@A)@(A@A))@(B@B)))))@((((((C@(D@D))@(C@(D@D)))@((((B@B)@(B@B))@((A@A)@(A@A)))@(((B@B)@(B@B))@((A@A)@(A@A)))))@(((C@(D@D))@(C@(D@D)))@((((B@B)@(B@B))@((A@A)@(A@A)))@(((B@B)@(B@B))@((A@A)@(A@A))))))@((((C@(D@D))@(C@(D@D)))@((((B@B)@(B@B))@((A@A)@(A@A)))@(((B@B)@(B@B))@((A@A)@(A@A)))))@(((C@(D@D))@(C@(D@D)))@((((B@B)@(B@B))@((A@A)@(A@A)))@(((B@B)@(B@B))@((A@A)@(A@A)))))))@(((((C@(D@D))@(C@(D@D)))@((((B@B)@(B@B))@((A@A)@(A@A)))@(((B@B)@(B@B))@((A@A)@(A@A)))))@(((C@(D@D))@(C@(D@D)))@((((B@B)@(B@B))@((A@A)@(A@A)))@(((B@B)@(B@B))@((A@A)@(A@A))))))@((((C@(D@D))@(C@(D@D)))@((((B@B)@(B@B))@((A@A)@(A@A)))@(((B@B)@(B@B))@((A@A)@(A@A)))))@(((C@(D@D))@(C@(D@D)))@((((B@B)@(B@B))@((A@A)@(A@A)))@(((B@B)@(B@B))@((A@A)@(A@A)))))))))
+    진리표
+        A B C D 결과
+        F F F F T
+        F F F T T
+        F F T F T
+        F F T T T
+        F T F F T
+        F T F T T
+        F T T F T
+        F T T T T
+        T F F F T
+        T F F T T
+        T F T F T
+        T F T T T
+        T T F F T
+        T T F T T
+        T T T F T
+        T T T T T
+
+testcase 12
+    입력 - (A+B)(C+D)(A+C)(B+D)+(AD)
+    변환 결과 - ((((((((((A@A)@(B@B))@((C@C)@(D@D)))@(((A@A)@(B@B))@((C@C)@(D@D))))@((A@A)@(C@C)))@(((((A@A)@(B@B))@((C@C)@(D@D)))@(((A@A)@(B@B))@((C@C)@(D@D))))@((A@A)@(C@C))))@((B@B)@(D@D)))@(((((((A@A)@(B@B))@((C@C)@(D@D)))@(((A@A)@(B@B))@((C@C)@(D@D))))@((A@A)@(C@C)))@(((((A@A)@(B@B))@((C@C)@(D@D)))@(((A@A)@(B@B))@((C@C)@(D@D))))@((A@A)@(C@C))))@((B@B)@(D@D))))@((((((((A@A)@(B@B))@((C@C)@(D@D)))@(((A@A)@(B@B))@((C@C)@(D@D))))@((A@A)@(C@C)))@(((((A@A)@(B@B))@((C@C)@(D@D)))@(((A@A)@(B@B))@((C@C)@(D@D))))@((A@A)@(C@C))))@((B@B)@(D@D)))@(((((((A@A)@(B@B))@((C@C)@(D@D)))@(((A@A)@(B@B))@((C@C)@(D@D))))@((A@A)@(C@C)))@(((((A@A)@(B@B))@((C@C)@(D@D)))@(((A@A)@(B@B))@((C@C)@(D@D))))@((A@A)@(C@C))))@((B@B)@(D@D)))))@(((A@D)@(A@D))@((A@D)@(A@D))))
+    진리표
+        A B C D 결과
+        F F F F F
+        F F F T F
+        F F T F F
+        F F T T F
+        F T F F F
+        F T F T F
+        F T T F T
+        F T T T T
+        T F F F F
+        T F F T T
+        T F T F F
+        T F T T T
+        T T F F F
+        T T F T T
+        T T T F T
+        T T T T T
+
