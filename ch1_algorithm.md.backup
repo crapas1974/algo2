@@ -1451,41 +1451,30 @@ testcase 1
   - 프로그램의 결과는 다음과 같다. 출력 형식은 평가하지 않는다.
 
     ```
-    숫자 리스트
-    testcase 1
-        계산한 간이 해시 값 : 827c
-    testcase 2
-        계산한 간이 해시 값 : c4ca
-    testcase 3
-        계산한 간이 해시 값 : b0ba
-    testcase 4
-        계산한 간이 해시 값 : 827c
-    testcase 5
-        계산한 간이 해시 값 : 827c
-    testcase 6
-        계산한 간이 해시 값 : 98be
-    testcase 7
-        계산한 간이 해시 값 : 3b10
-    testcase 8
-        계산한 간이 해시 값 : cf21
+    Testcase 1
+    	BFS 문자열 표현의 간이 해시값 : 669e
 
-    유전자 시퀀스 리스트
-    testcase 1
-        계산한 간이 해시 값 : d793
-    testcase 2
-        계산한 간이 해시 값 : 0d61
-    testcase 3
-        계산한 간이 해시 값 : e86a
-    testcase 4
-        계산한 간이 해시 값 : d793
-    testcase 5
-        계산한 간이 해시 값 : d793
-    testcase 6
-        계산한 간이 해시 값 : 4c9a
-    testcase 7
-        계산한 간이 해시 값 : ed28
-    testcase 8
-        계산한 간이 해시 값 : 14e9
+	Testcase 2
+	    BFS 문자열 표현의 간이 해시값 : 3d7c
+	
+	Testcase 3
+	    BFS 문자열 표현의 간이 해시값 : 669e
+	
+	Testcase 4
+	    BFS 문자열 표현의 간이 해시값 : 433b
+	
+	Testcase 5
+	    BFS 문자열 표현의 간이 해시값 : 4254
+	
+	Testcase 6
+	    BFS 문자열 표현의 간이 해시값 : 5698
+	
+	Testcase 7
+	    BFS 문자열 표현의 간이 해시값 : 7917
+	
+	Testcase 8
+	    BFS 문자열 표현의 간이 해시값 : 399b
+
     ```
 
 ### [문제에 대한 이해]
