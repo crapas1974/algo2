@@ -18,7 +18,7 @@
 
 유전자 염기서열은 'C', 'T', 'A', 'G' 네 개의 염기로 모든 유전 정보를 코딩하고 있다. 서로 다른 유전자 염기 서열은 서로 다른 유전 정보를 의미하기 때문에, C, T, A, G 네 글자로 만들 수 있는 문자열이 유전자에 포함된 유전 정보라고 말할 수 있고, 문자열이 달라지면 다른 유전 정보를 의미한다고 말할 수도 있다.
 
-유전자 염기서열의 결과로 각 개체가 달라지는 현상을 연구하는 D 연구원은 네 가지 염기로 만들 수 있는 유전 정보에 대해서 확인해보고자 한다.
+닥터 G와 같은 연구 그룹에서 유전자 염기서열의 결과로 각 개체가 달라지는 현상을 연구하는 D 연구원은 네 가지 염기로 만들 수 있는 유전 정보에 대해서 확인해보고자 한다.
 
 ## 수행목표
 
@@ -190,7 +190,7 @@ if __name__ == "__main__":
 
 ## 스토리
 
-C 연구원은 계속해서 세포 약물 반응과 관련된 새로운 후보 물질을 찾고 있다. 이번에는 기존 화합물을 조합해서 새로운 후보 물질을 찾고 있는데, 그 중 특정 성분 B 때문에 골치가 아픈 상황이었다. 조합의 결과로 나온 물질에 이 성분이 부족하면 효과가 없는데, 이 성분이 어떤 값을 넘어가면 물질의 매우 불안정해져서 폭발 가능성이 있기 때문이다.
+C 연구원은 세포 약물 반응과 관련된 새로운 후보 물질을 찾고 있다. 이번에는 기존 화합물을 조합해서 새로운 후보 물질을 찾고 있는데, 그 중 특정 성분 B 때문에 골치가 아픈 상황이었다. 조합의 결과로 나온 물질에 이 성분이 부족하면 효과가 없는데, 이 성분이 어떤 값을 넘어가면 물질의 매우 불안정해져서 폭발 가능성이 있기 때문이다.
 
 C 연구원은 조합할 재료 물질들에 이 성분의 양을 리스트로 만든 후, 조합 후 목표 양에 따라서 조합할 수 있는 모든 방법을 먼저 찾아두기로 했다. 그리고 그 방법을 찾기 위해서 프로그래밍 지원 게시판에 도움을 청했다.
 
@@ -408,7 +408,7 @@ if __name__ == "__main__":
 
 ## 스토리
 
-유전자 목록을 정렬해서 관리할 수 있게 된 닥터 K는 여전히 답답한 부분이 남아 있었다. 어떤 유전자 염기서열을 사용해서, 그 유전자 염기 서열이 목록에 있는지, 만약 목록에 없다면 사전순으로 주어진 유전자 염기 서열의 이전, 이후 유전자 염기 서열이 어떤 것인지 알고 싶었다. 그것도 매우 빠르게.
+유전자 목록을 정렬해서 관리할 수 있게 된 닥터 G는 여전히 답답한 부분이 남아 있었다. 어떤 유전자 염기서열을 사용해서, 그 유전자 염기 서열이 목록에 있는지, 만약 목록에 없다면 사전순으로 주어진 유전자 염기 서열의 이전, 이후 유전자 염기 서열이 어떤 것인지 알고 싶었다. 그것도 매우 빠르게.
 
 처음부터 차례대로 비교해보기에는 유전자 목록이 너무 많았고, 영어 사전처럼 중간 중간에 첫 글자 인덱스가 붙어 있으면 좋겠지만 그런 것도 준비되어 있지 않았기 때문이다.
 
@@ -559,7 +559,7 @@ if __name__ == "__main__":
 
 ---
 
-# 문제 4. 가장 전기가 잘 통하는 구간은 어디일까?
+# 문제 4. 가장 전기가 잘 통하는 구간은 어디일까? (1)
 
 ## 문제 분류
 
@@ -1408,57 +1408,31 @@ Testcase 4
   - 파이썬 3.9 이상에서 동작 여부를 확인한다.
   - 프로그램의 결과는 다음과 같다. 출력 형식은 평가하지 않는다.
 
-        ```
+  ```
+  Testcase 1
+      BFS 문자열 표현의 간이 해시값 : 669e
 
-    <<<<<<< HEAD
-    Testcase 1
-    BFS 문자열 표현의 간이 해시값 : 669e
-    =======
-    Testcase 1
-    BFS 문자열 표현의 간이 해시값 : 669e
-    Testcase 2
-    BFS 문자열 표현의 간이 해시값 : 3d7c
-    Testcase 3
-    BFS 문자열 표현의 간이 해시값 : 669e
-    Testcase 4
-    BFS 문자열 표현의 간이 해시값 : 433b
-    Testcase 5
-    BFS 문자열 표현의 간이 해시값 : 4254
-    Testcase 6
-    BFS 문자열 표현의 간이 해시값 : 5698
-    Testcase 7
-    BFS 문자열 표현의 간이 해시값 : 7917
-    Testcase 8
-    BFS 문자열 표현의 간이 해시값 : 399b
+  Testcase 2
+      BFS 문자열 표현의 간이 해시값 : 3d7c
 
-> > > > > > > 5549907d147ea52cc006e970e4f2fd27ed312f9c
+  Testcase 3
+      BFS 문자열 표현의 간이 해시값 : 669e
 
-    ```
+  Testcase 4
+      BFS 문자열 표현의 간이 해시값 : 433b
 
-Testcase 2
-BFS 문자열 표현의 간이 해시값 : 3d7c
+  Testcase 5
+      BFS 문자열 표현의 간이 해시값 : 4254
 
-Testcase 3
-BFS 문자열 표현의 간이 해시값 : 669e
+  Testcase 6
+      BFS 문자열 표현의 간이 해시값 : 5698
 
-Testcase 4
-BFS 문자열 표현의 간이 해시값 : 433b
+  Testcase 7
+      BFS 문자열 표현의 간이 해시값 : 7917
 
-Testcase 5
-BFS 문자열 표현의 간이 해시값 : 4254
-
-Testcase 6
-BFS 문자열 표현의 간이 해시값 : 5698
-
-Testcase 7
-BFS 문자열 표현의 간이 해시값 : 7917
-
-Testcase 8
-BFS 문자열 표현의 간이 해시값 : 399b
-
-```
-
-```
+  Testcase 8
+      BFS 문자열 표현의 간이 해시값 : 399b
+  ```
 
 ### [보너스 과제 확인]
 
@@ -1782,55 +1756,30 @@ Testcase 4
   - 파이썬 3.9 이상에서 동작 여부를 확인한다.
   - 프로그램의 결과는 다음과 같다. 출력 형식은 평가하지 않는다.
 
-        ```
-
-    <<<<<<< HEAD
-    Testcase 1
-    BFS 문자열 표현의 간이 해시값 : 6822
-    =======
-    Testcase 1
-    BFS 문자열 표현의 간이 해시값 : 6822
-    Testcase 2
-    BFS 문자열 표현의 간이 해시값 : a86b
-    Testcase 3
-    BFS 문자열 표현의 간이 해시값 : 6822
-    Testcase 4
-    BFS 문자열 표현의 간이 해시값 : e919
-    Testcase 5
-    BFS 문자열 표현의 간이 해시값 : 336f
-    Testcase 6
-    BFS 문자열 표현의 간이 해시값 : cca6
-    Testcase 7
-    BFS 문자열 표현의 간이 해시값 : f4b4
-    Testcase 8
-    BFS 문자열 표현의 간이 해시값 : 5f48
-
-    > > > > > > > 5549907d147ea52cc006e970e4f2fd27ed312f9c
-
-        ```
+  ```
+  Testcase 1
+      BFS 문자열 표현의 간이 해시값 : 6822
 
   Testcase 2
-  BFS 문자열 표현의 간이 해시값 : a86b
+      BFS 문자열 표현의 간이 해시값 : a86b
 
   Testcase 3
-  BFS 문자열 표현의 간이 해시값 : 6822
+      BFS 문자열 표현의 간이 해시값 : 6822
 
   Testcase 4
-  BFS 문자열 표현의 간이 해시값 : e919
+      BFS 문자열 표현의 간이 해시값 : e919
 
   Testcase 5
-  BFS 문자열 표현의 간이 해시값 : 336f
+      BFS 문자열 표현의 간이 해시값 : 336f
 
   Testcase 6
-  BFS 문자열 표현의 간이 해시값 : cca6
+      BFS 문자열 표현의 간이 해시값 : cca6
 
   Testcase 7
-  BFS 문자열 표현의 간이 해시값 : f4b4
+      BFS 문자열 표현의 간이 해시값 : f4b4
 
   Testcase 8
-  BFS 문자열 표현의 간이 해시값 : 5f48
-
-  ```
+      BFS 문자열 표현의 간이 해시값 : 5f48
 
   ```
 
@@ -2043,93 +1992,72 @@ if __name__ == "__main__":
 
 ## 스토리
 
-연구 내용을 논문으로 정리하던 닥터 E는 트리로 구성된 계통도의 이점에 대해서 다음과 같이 적었다.
-
-> - 트리 형태로 표현한 계통도는, 정해진 방법으로 각 노드를 순회하며 나열하면 자동으로 다음과 같은 순서의 목록을 생성할 수 있다.
->   - 전체 목록에서 항상 조상 생물이 후손 생물보다 앞에 오도록 나열
->   - 반대로 항상 후손 생물이 조상 생물보다 앞에 오도록 나열된 목록
-
-에 포함된 동물을 다음과 같이 적어 내려갔다.
-
-'파충류, '
-
-전위 G0 G1_1 G2_1 G2_2 G1_2 G2_3 G2_4
-: 부모는 항상 자식보다 먼저 온다.
-
-후위 G2_1 G2_2 G1_1 G2_3 G2_4 G1_2 G0
-: 자식은 항상 부모보다 먼저 온다.
-
-중위 G2_1 G2_2 G1_1 G0 G2_3 G2_4 G1_2
-: 왼쪽이 항상 오른쪽보다 먼저 온다.
-
-계통도를 공유하기 위해서 프로그래밍 게시판에서 조언한 방법에 따라 계통도를 문자열로 만들어놓고 보니 그 결과가 닥터 E의 마음을 불편하게 했다. 쓸데없이 문자열이 길어졌고, 또 주어진 문자열 만으로 트리의 형태를 유추하는게 쉽지 않았기 때문이다.
-
-곰곰히 생각해 보니 더 좋은 방법이 있는 것 같았다. 머리 속의 생각을 정리하고 이를 실제로 만들어보니 결과가 꽤나 흡족했다.
+닥터 E는 트리로 구성된 계통도를 이리저리 뜯어보다가 계통도에 포함된 생물들을 나열하는 몇 가지 절차를 발견했다.
+'이 순서로 나열하면, 조상 생물이 항상 후손 생물 보다 앞에 위치하는 목록이 만들어지는군.'
+'어, 이렇게 하면 후손 생물이 항상 조상 생물보다 앞에 위치하는 목록도 만들어지는데?'
+'음, 이건 어떤 특징이 있지?'
+닥터 E는 트리에서 본인이 발견한 목록 생성 절차에 대한 메모를 작성한 다음, 그 메모를 프로그래밍 지원 게시판에 게시하고 이러한 절차로 목록을 만드는 방법을 문의했다.
 
 ## 수행목표
 
-- 이진 트리를 다음과 같은 문자열로 표현한다.
+- 생물의 이름을 노드의 값으로 가지는 이진트리를 사용해 진화계통도 트리를 생성한다.
+- 진화계통도 트리에 포함된 모든 생물의 이름을 단 한번 씩 만 포함하는 목록을 만드는 함수 1을 구현한다. 이 목록은 다음 원칙을 준수한다.
+  > - 부모-자식 관계의 노드에 대해서, 항상 부모 노드의 이름이 자식 노드의 이름보다 목록의 앞부분에 위치한다.
+  > - 같은 부모를 가진 형제 노드는 왼쪽 노드의 이름이 오른쪽 노드의 이름보다 목록의 앞부분에 위치한다.
+- 진화계통도 트리에 포함된 모든 생물의 이름을 단 한번 씩 만 포함하는 목록을 만드는 함수 2를 구현한다. 이 목록은 다음 원칙을 준수한다.
+  > - 부모-자식 관계의 노드에 대해서, 항상 자식 노드의 이름이 부모 노드의 이름보다 목록의 앞부분에 위치한다.
+  > - 같은 부모를 가진 형제 노드는 왼쪽 노드의 이름이 오른쪽 노드의 이름보다 목록의 앞부분에 위치한다.
+- 진화계통도 트리에 포함된 모든 생물의 이름을 단 한번 씩 만 포함하는 목록을 만드는 함수 3을 구현한다. 이 목록은 다음 원칙을 준수한다.
+  > - 어떤 노드의 왼쪽 자식 노드와 그 노드의 자손 노드의 이름은 항상 그 노드의 이름보다 앞에 위치한다.
+  > - 어떤 노드의 오른쪽 자식 노드와 그 노드의 자손 노드의 이름은 항상 그 노드의 이름보다 뒤에 위치한다.
+- 다음 그림의 이진트리를 대상으로 세 함수가 반환하는 결과의 목록은 다음과 같다.
 
-  - 같은 부모를 공유하는 두 자식 노드는 괄호로 묶는다.
-  - 형제가 없는 노드는 빈 문자열로 표현한다.
-  - 자식 노드는 부모 노드 뒤에 붙여서 표현한다.
-  - 자식 노드가 없는 노드는 더 이상 확장해 표현하지 않는다.
+  - 함수 1 : R, G, A, L, O, I, M, T, H
+  - 함수 2 : L, A, O, G, H, T, M, I, R
+  - 함수 3 : A, L, G, O, R, I, T, H, M
 
-    - 다음은 두 개의 트리와, 이 두 트리를 이 방법으로 문자열로 바꾼 예이다.
+  ![](ch4_10_1.png)
 
-    * 트리 1 : `G0(G1_1(G2_1,G2_2),G1_2(G2_3,G2_4))`
-
-      ![image-20240116200733387](/Users/edbergbak/Library/Application Support/typora-user-images/image-20240116200733387.png)
-
-    * 트리 2 : `G0(G1_1(,G2_2),G1_2(G2_3(G3_5,),),)`
-
-      ![image-20240116201127404](/Users/edbergbak/Library/Application Support/typora-user-images/image-20240116201127404.png)
-
-  * 이진 트리를 이와 같은 방식으로 표현하는 함수를 구현한다.
-
-* 다음 첨부파일에는 8개의 트리가 포함되어 있다. 이 트리를 문자열로 바꾸고 출력한다.
+- 첨부한 파일(tree_example2.txt)에는 11개의 트리가 포함되어 있고, 각각의 트리는 다음과 같이 저장되어 있다.
+  - 각 트리는 testcase 번호 줄로 시작한다.
+  - 각 줄이 하나의 노드이며, 노드의 위치와 이름으로 구성되어 있다. 위치에서 O은 최상위 노드를 의미하며, l은 왼쪽 자식 노드, r은 오른쪽 자식 노드를 의미한다. 예시는 다음과 같다.
+    - O : 루트 노드
+    - Ol : 루트의 왼쪽 자식 노드
+    - Orlr : 루트의 오른쪽 자식 노드의 왼쪽 자식 노드의 오른쪽 자식 노드
+  - 트리에 포함된 각 노드의 순서는 무작위로 섞여서 제공된다. 생성된 트리에는 주어진 노드가 모두 포함되어야 한다.
+- 첨부한 파일의 데이터로 생성한 11개의 트리에 대해서 세 방식의 이름 리스트를 생성한 후, 이 리스트를 모두 이어 붙인 문자열의 간이 해시값을 출력한다.
 
 ## 수행단계
 
-- 트리 자료구조에서 DFS 방식으로 탐사하는 방법에 대해서 조사한다.
+- 진화 계통도를 이진트리로 구성하는 파이썬 클래스 및 함수를 구현한다. 이 부분은 과거 문제에서 구현한 코드를 가지고 와서 사용해도 좋다.
+- 수행 목표에서 제시한 3개의 함수를 basic_approach/traversal.py 파일에 구현한다.
+  - 세 함수는 모두 재귀 호출을 사용해서 동작한다.
+  - 세 함수는 같은 코드를 공유하고, 코드의 순서만 다르게 구성해 서로 다른 문자열의 리스트를 반환하도록 구현한다. (물론, 재귀호출하는 함수의 이름은 달라야 한다.)
+- 첨부한 파일에 포함된 트리의 표현은 예전 문제에서 사용한 이진트리의 테스트용 데이터와 같은 형식이다. 예전에 구현한 파일 파싱 코드를 가지고 와서 사용해도 좋다. 첨부한 파일에 포함된 각각의 트리를 생성한다.
+- 만든 트리를 세 가지 방식으로 구현된 함수를 사용해 세 개의 리스트를 만든다. 이 세개의 리스트를 순서대로 다음 함수의 파라미터로 사용해서 얻은 결과를 출력한다.
 
-- 이진 트리를 생성한 후, 이 이진 트리를 DFS 방식으로 고유한 문자열로 바꾸는 함수를 basic_approach/convert_tree_to_str_d.py 파일에 구현한다.
+```python
+import hashlib
 
-  - 이진 트리를 문자열로 바꾸기 위해서 트리 전체를 탐사하는 방식은 깊이 우선 탐석(DFS) 방식을 사용한다.
-  - 이 함수는 레벨과 무관하게 자식 노드들을 먼저 확인해 괄호와 쉼표를 사용해 나열한다.
-  - 형제 노드 중 하나가 없는 경우, 빈 자리는 빈 문자열로 표현해 왼쪽, 오른쪽 중 비어 있는 쪽이 어디인지 알 수 있도록 한다.
+def hash4_from_lists(arr1, arr2, arr3):
+    arr = arr1 + arr2 + arr3
+    return hashlib.md5(str(arr).encode()).hexdigest()[:4]
 
-- 이 함수를 사용해 첨부한 파일에 포함된 8개의 트리를 문자열 형식으로 변경한 후, 이 문자열을 다음 함수를 사용해 만든 간이 해시값을 출력한다.
-  - 파일은 자료 구조 과정에서 이진 트리의 문제에 사용한 것과 동일한 구조의 파일이다.
-  - 각 줄이 하나의 노드이며, 노드의 위치와 이름으로 구성되어 있다.
-  - 위치에서 O는 최상위 노드를 의미하며, l은 왼쪽 자식 노드, r은 오른쪽 자식 노드를 의미한다.
-  - 각 노드의 순서는 무작위로 셔플되어 있으나, 데이터에 포함된 모든 노드를 사용해 트리를 생성해야 한다.
+```
 
 ## 결과예시
 
 ```
-Testcase 1
-    BFS 문자열 표현의 간이 해시값 : 6822
+Testcase 1 : ebf1
 
-Testcase 2
-    BFS 문자열 표현의 간이 해시값 : a86b
+Testcase 2 : 806f
 
-Testcase 3
-    BFS 문자열 표현의 간이 해시값 : 6822
-
-Testcase 4
-    BFS 문자열 표현의 간이 해시값 : e919
 (이하 생략)
 ```
 
 ## 참고사항
 
-- 테스트케이스 1, 2, 3, 4 트리의 문자열 표현은 다음과 같다.
-  - a0(b0(c0,c1),b1(c2,c3))
-  - b0(a0,)
-  - a0(b0(c0,c1),b1(c2,c3))
-  - a0(b0(c0(d0(e0,),),),)
-- 이 문제를 해결하기 위해서 이전에 구현한 datastructure/evolution_binarytree.py 파일을 import해서 사용하거나, 이 파일에서 필요한 코드를 복사해 사용해도 좋다.
+- 없음
 
 ## 제약사항
 
@@ -2141,8 +2069,7 @@ Testcase 4
 
 ## 보너스 과제
 
-- 친절한 닥터 E는 공동 연구를 진행하는 외부 연구팀을 위해서 수정한 방식으로 만든 문자열 형식의 트리 데이터를 원래의 트리로 변경하는 방법도 제공해주기로 하였다. 이를 위해서 위의 형식으로 주어진 문자열을 트리로 복원하는 함수를 구현하라.
-  - 문제에서 제공한 8개의 트리를 문자열로 바꾼 결과를 다시 트리로 복원하고, 이를 다시 문자열로 바꾸어 출력한다.
+- 없음
 
 ---
 
@@ -2151,116 +2078,155 @@ Testcase 4
 ### [수행목표 확인]
 
 - 문제에서 지시한 형식을 준수하였는가?
-  - basic_approach/convert_tree_to_str_d.py 파일에 구현이 되어 있는지 확인한다.
-  - 깊이 우선 탐색(DFS) 방식으로 트리를 탐색하면서 트리의 문자열을 생성하는지 확인한다.
+  - basic_approach/traversal.py 파일에 구현이 되어 있는지 확인한다.
+  - 전위 순회, 중위 순회, 후위 순회 세 방식을 재귀 호출로 재귀 호출의 순서만 바꾸는 차이를 가지도록 구현하였는지 확인하낟.
 - 결과가 정확한가?
 
   - 파이썬 3.9 이상에서 동작 여부를 확인한다.
   - 프로그램의 결과는 다음과 같다. 출력 형식은 평가하지 않는다.
 
-        ```
-
-    <<<<<<< HEAD
-    Testcase 1
-    BFS 문자열 표현의 간이 해시값 : 6822
-    =======
-    Testcase 1
-    BFS 문자열 표현의 간이 해시값 : 6822
-    Testcase 2
-    BFS 문자열 표현의 간이 해시값 : a86b
-    Testcase 3
-    BFS 문자열 표현의 간이 해시값 : 6822
-    Testcase 4
-    BFS 문자열 표현의 간이 해시값 : e919
-    Testcase 5
-    BFS 문자열 표현의 간이 해시값 : 336f
-    Testcase 6
-    BFS 문자열 표현의 간이 해시값 : cca6
-    Testcase 7
-    BFS 문자열 표현의 간이 해시값 : f4b4
-    Testcase 8
-    BFS 문자열 표현의 간이 해시값 : 5f48
-
-    > > > > > > > 5549907d147ea52cc006e970e4f2fd27ed312f9c
-
-        ```
-
-  Testcase 2
-  BFS 문자열 표현의 간이 해시값 : a86b
-
-  Testcase 3
-  BFS 문자열 표현의 간이 해시값 : 6822
-
-  Testcase 4
-  BFS 문자열 표현의 간이 해시값 : e919
-
-  Testcase 5
-  BFS 문자열 표현의 간이 해시값 : 336f
-
-  Testcase 6
-  BFS 문자열 표현의 간이 해시값 : cca6
-
-  Testcase 7
-  BFS 문자열 표현의 간이 해시값 : f4b4
-
-  Testcase 8
-  BFS 문자열 표현의 간이 해시값 : 5f48
-
   ```
+  Testcase 1 : ebf1
 
+  Testcase 2 : 806f
+
+  Testcase 3 : 4aea
+
+  Testcase 4 : 806f
+
+  Testcase 5 : cdf0
+
+  Testcase 6 : b76e
+
+  Testcase 7 : 8714
+
+  Testcase 8 : 3a89
+
+  Testcase 9 : ffd1
+
+  Testcase 10 : 518f
+
+  Testcase 11 : 0a3c
   ```
-
-### [보너스 과제 확인]
-
-- 결과가 정확한가?
-  - 원래의 트리를 그대로 복원하여, 복원한 트리의 문자열 표현이 원래의 문자열 표현과 동일한지 확인한다.
-
-```
-Testcase 1
-    BFS 문자열 표현의 간이 해시값 : 669e
-    복원한 트리의 BFS 문자열 표현의 간이 해시값 : 669e
-    원래의 트리와 일치합니다.
-
-Testcase 2
-    BFS 문자열 표현의 간이 해시값 : 3d7c
-    복원한 트리의 BFS 문자열 표현의 간이 해시값 : 3d7c
-    원래의 트리와 일치합니다.
-
-Testcase 3
-    BFS 문자열 표현의 간이 해시값 : 669e
-    복원한 트리의 BFS 문자열 표현의 간이 해시값 : 669e
-    원래의 트리와 일치합니다.
-
-Testcase 4
-    BFS 문자열 표현의 간이 해시값 : 433b
-    복원한 트리의 BFS 문자열 표현의 간이 해시값 : 433b
-    원래의 트리와 일치합니다.
-
-Testcase 5
-    BFS 문자열 표현의 간이 해시값 : 4254
-    복원한 트리의 BFS 문자열 표현의 간이 해시값 : 4254
-    원래의 트리와 일치합니다.
-
-Testcase 6
-    BFS 문자열 표현의 간이 해시값 : 5698
-    복원한 트리의 BFS 문자열 표현의 간이 해시값 : 5698
-    원래의 트리와 일치합니다.
-
-Testcase 7
-    BFS 문자열 표현의 간이 해시값 : 7917
-    복원한 트리의 BFS 문자열 표현의 간이 해시값 : 7917
-    원래의 트리와 일치합니다.
-
-Testcase 8
-    BFS 문자열 표현의 간이 해시값 : 399b
-    복원한 트리의 BFS 문자열 표현의 간이 해시값 : 399b
-    원래의 트리와 일치합니다.
-```
 
 ### [문제에 대한 이해]
 
-- 트리에서 DFS 방식으로 탐색하는 순서를 임의의 트리를 사용해 설명하라.
-- 파이썬 프로그램에서 트리의 DFS 탐색을 위해서 어떠한 방법을 사용하였는가?
-- 만약 재귀 호출을 사용하지 않고 DFS와 BFS를 구현해야 할 때, 스택 또는 큐 둘 중 하나를 사용할 수 있다고 가정하자. DFS와 BFS 각각은 어떤 자료구조를 사용해서 구현하는 것이 바람직한지 의견을 근거와 함께 제시하라.
+- 이 문제에서 사용한 이진 트리의 세 가지 탐색 방법은 각각 전위 순회 탐사, 후위 순회 탐사, 중위 순회 탐사라고 한다. 세 탐사 방법을 재귀 호출을 사용해 구현하는 방법을 설명하라.
 
 ### [코드 예시]
+
+```python
+class Species:
+    def __init__(self, name):
+        self.name = name
+        self.left = None
+        self.right = None
+
+def add_child(species_name: str, parent: Species, is_left: bool) -> Species:
+    new_species = Species(species_name)
+    if parent != None:
+        if is_left:
+            if parent.left != None:
+                return None
+            else:
+                parent.left = new_species
+        else:
+            if parent.right != None:
+                return None
+            else:
+                parent.right = new_species
+    return new_species
+
+def in_order(root: Species):
+    if root == None:
+        return []
+    result = []
+    result += in_order(root.left)
+    result.append(root.name)
+    result += in_order(root.right)
+    return result
+
+def pre_order(root: Species):
+    if root == None:
+        return []
+    result = []
+    result.append(root.name)
+    result += pre_order(root.left)
+    result += pre_order(root.right)
+    return result
+
+def post_order(root: Species):
+    if root == None:
+        return []
+    result = []
+    result += post_order(root.left)
+    result += post_order(root.right)
+    result.append(root.name)
+    return result
+
+
+def make_tree(nodes: list[(str, str)]):
+    check_node_location = nodes[0][0]
+    nodes.sort(key=lambda x: len(x[0]))
+
+    root = add_child(nodes[0][1], None, True)
+    check_node = None
+    if check_node_location == 'O':
+        check_node = root
+    for i in range(1, len(nodes)):
+        location = nodes[i][0]
+        name = nodes[i][1]
+        parent = root
+        discovery_str = ''
+        for j in range(1, len(location) - 1):
+            if location[j] == 'l':
+                parent = parent.left
+                discovery_str += 'l'
+            else:
+                parent = parent.right
+                discovery_str += 'r'
+
+        if location[-1] == 'l':
+            added_node = add_child(name, parent, True)
+
+        else:
+            added_node = add_child(name, parent, False)
+        if location == check_node_location:
+            check_node = added_node
+    return root, check_node
+
+import hashlib
+
+def hash4_from_lists(arr1, arr2, arr3):
+    arr = arr1 + arr2 + arr3
+    return hashlib.md5(str(arr).encode()).hexdigest()[:4]
+
+
+def main():
+    with open("tree_example2.txt", "r") as f:
+        lines = f.readlines()
+
+    testcases = []
+    testcase = []
+    for line in lines:
+        if line[:8] == 'Testcase':
+            if testcase != []:
+                testcases.append(testcase)
+                testcase = []
+        else:
+            testcase.append(line.strip().split(','))
+    testcases.append(testcase)
+
+    for i, tc in enumerate(testcases):
+        root, _ = make_tree(tc)
+        in_order_list = in_order(root)
+        pre_order_list = pre_order(root)
+        post_order_list = post_order(root)
+        result = hash4_from_lists(pre_order_list, post_order_list, in_order_list)
+        print(f"Testcase {i + 1} : {result}")
+        print()
+
+if __name__ == "__main__":
+    main()
+
+```
