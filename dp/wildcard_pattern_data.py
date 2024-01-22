@@ -1,0 +1,17 @@
+testcases = [
+    ('CTATTAG', 'TAT'),
+    ('CTATTAG', 'T?T'),
+    ('CTATTAG', 'A?G'),
+    ('CTATTAG', 'TA*AG'),
+    ('CTATTAG', 'TA*AT'),
+    ('CCCAGTT', 'A*G'),
+    ('CCCAGTT', 'AG'),
+    ('CCCAGTT', 'A?G'),
+    ('CGTATGTAGCCGTGTA', 'AT*CG?GT'),
+    ('ATCGGT', 'AT*CG*GT'),
+    ('ATCGT', 'AT*CG*GT'),
+    ('AGGCGAAACCTACGTCTGCGTTCACTCGGCTTCATACTAGTAGTGGCCGA', 'CGA*TC?GCG*TTC?T'),
+    ('AGGCGAAACCTACGTCTGCGTTCACTCGGCTTCATACTAGTAGTGGCCGA', 'CGA*TC?GCG*GTT*TTC?T'),
+    ('bishpirpfznpeyxnhgfkhznoxlfjxfhllrkewbiyjtpwmavikupfqcwusieeitbnwowdhwoeyijhnduahovjgklaxgiuqcqkedajsqxkqachwpjesxjziowjvheggsuhggervqmymlypawrsrrkesoccwtjkqszvjwmobzxqifiqwyhadgdzflblsfntagymbbdafveitwbajfghblnwajchdgvjaswwgxdoziaihtbhnzopgkcqseharzzkaqgszbfsnodojipzpasdmznfskbbtikxqpxjptbmcpfbwxfxwyxjdzxqfieekskbkgdmdgjpxzrhktxpraiquvynmdlwgiuxfofytajmrxyufqrdbumuytwoycbhohfakkyyfkuwhzujggnfczodmxrlrwznjhxafxtmpxxkrdyxomhajocbhrcwkjwqwpqvwxceahbvojkapdbnefnivtv oqytoqilgxllfverhjzcjkwvjxbwxeejakvvxizmspcmbemgxzcuuyxalmzfmetblqmfwkfmwcyyywqjsplujcyrrvbjnxttvnkshfrsnyhomtjcwtedzqtgwvvhsrwsqvyuyexihlpbtmdfalpufvrynypqulemfpfnzwcwjcplxexenhebmyxrdfebeqloxpjnlhuufmgrhehhogtmuoayrxmohguafaaxuxgzpewiugvtrzosbssfuyuztkcflnwkhhztrmjrlnkftzsaykfhvjdndmffopcklbzvjlqquzirqrhyqenvxrrnbcgwzlexldsytwggypduqosoinyhvhharasphreinhklsuxtrwuqeoudkdcrofzitlqobfdtcdlfqgzkxojxdnpqtpkfulzvfiirbslfnpefisokwwzwpigqewjbiozvtneduhmgiguxdbeochjhynfcvivqqyafjfnjthmgicjyalugqdjetbetfpnvbpmasdzunuhygbzzvgugvsytfdov', 'niv*jcp??ex*jfnjthmgi'),
+    ('bishpirpfznpeyxnhgfkhznoxlfjxfhllrkewbiyjtpwmavikupfqcwusieeitbnwowdhwoeyijhnduahovjgklaxgiuqcqkedajsqxkqachwpjesxjziowjvheggsuhggervqmymlypawrsrrkesoccwtjkqszvjwmobzxqifiqwyhadgdzflblsfntagymbbdafveitwbajfghblnwajchdgvjaswwgxdoziaihtbhnzopgkcqseharzzkaqgszbfsnodojipzpasdmznfskbbtikxqpxjptbmcpfbwxfxwyxjdzxqfieekskbkgdmdgjpxzrhktxpraiquvynmdlwgiuxfofytajmrxyufqrdbumuytwoycbhohfakkyyfkuwhzujggnfczodmxrlrwznjhxafxtmpxxkrdyxomhajocbhrcwkjwqwpqvwxceahbvojkapdbnefnivtvuoqytoqilgxllfverhjzcjkwvjxbwxeejakvvxizmspcmbemgxzcuuyxalmzfmetblqmfwkfmwcyyywqjsplujcyrrvbjnxttvnkshfrsnyhomtjcwtedzqtgwvvhsrws vyuyexihlpbtmdfalpufvrynypqulemfpfnzwcwjcplxexenhebmyxrdfebeqloxpjnlhuufmgrhehhogtmuoayrxmohguafaaxuxgzpewiugvtrzosbssfuyuztkcflnwkhhztrmjrlnkftzsaykfhvjdndmffopcklbzvjlqquzirqrhyqenvxrrnbcgwzlexldsytwggypduqosoinyhvhharasphreinhklsuxtrwuqeoudkdcrofzitlqobfdtcdlfqgzkxojxdnpqtpkfulzvfiirbslfnpefisokwwzwpigqewjbiozvtneduhmgiguxdbeochjhynfcvivqqyafjfnjthmgicjyalugqdjetbetfpnvbpmasdzunuhygbzzvgugvsytfdov', 'niv*jcp??ex?jfnjthmgi')
+]

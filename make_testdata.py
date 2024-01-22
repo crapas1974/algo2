@@ -27,7 +27,18 @@ def make_random_graph(vertex_cnt, edge_cnt, d_min, d_max):
         distance = random.randint(d_min, d_max)
         print(start, end, distance)
 
-make_random_graph(200, 10000, 100, 150)
+def make_random_seq(size, vocab = None):
+    if vocab == None:
+        vocab = ['A', 'C', 'G', 'T']
+    seq = ''
+    for _ in range(size):
+        seq += random.choice(vocab)
+    return seq
+
+print(make_random_seq(50))
+vocab = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+print(make_random_seq(1000, vocab))
+#make_random_graph(200, 10000, 100, 150)
 # 52C2
 # 100C2 
 # 150C2=

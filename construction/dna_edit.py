@@ -93,7 +93,7 @@ def main():
         print(f'TC {i + 1} :')
         print(f'  DNA 편집 비용: {dna_edit_cost_td(testcase[0], testcase[1])}')
 
-    testcases = [['CATC', 'CGGT'], ['CAACCACAAC', 'C'], ['C', 'CAACCACAAC'], ['AATGATGCTC', ''], ['CCCAGCGTCGAAACCGCTGC', 'ACACGGATGCCTGTTATGAT']]
+    testcases = [['CATC', 'CGGT'], ['CGTC', 'GAGT'], ['CAACCACAAC', 'C'], ['C', 'CAACCACAAC'], ['AATGATGCTC', ''], ['CCCAGCGTCGAAACCGCTGC', 'ACACGGATGCCTGTTATGAT']]
     for i, testcase in enumerate(testcases):
         print(f'TC {i + 1} :')
         cost, path = dna_edit_cost_bu(testcase[0], testcase[1])

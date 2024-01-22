@@ -2607,3 +2607,343 @@ if __name__ == "__main__":
 ```
 
 ---
+
+# 문제 13. DNA의 공통 패턴 (1)
+
+## 문제 분류
+
+- 중요도 : 4/5
+- 난이도 : 3/5
+- 목표 수행 시간 : 4시간
+
+## 스토리
+
+“바이러스 감염이 돌연변이의 원인이 되는지 확인하는 연구가 있어요.”
+바이러스를 연구하는 V 연구원과 진화를 연구하는 E 연구원이 커피를 마시면서 최근 연구 동향에 대해서 이야기를 나누고 있었다. 두 사람 중 V 연구원이 지금 잘 풀리지 않는 문제에 대해서 물어보던 중이었다.
+
+“몸에서 DNA가 복제될 때, 바이러스의 영향으로 바이러스의 DNA 패턴 일부가 DNA에 섞여 들어가거든요. 그래서 특정 돌연변이로 의심되는 두 개체 각각의 DNA 염기 서열에서 가장 긴 공통 부분 문자열을 찾은 후, 이 패턴과 일치하는 바이러스를 찾아보는 방법으로 진행 중이에요. 그런데 가장 긴 공통 부분 문자열을 찾는게 영......"
+
+그러자 E 연구원이 제안했다.
+
+"프로그래밍 지원 게시판의 도움을 받아보시죠?"
+
+## 수행목표
+
+- 두 개의 문자열이 주어진다. 두 문자열에 모두 포함되어 있는 부분 문자열 중 가장 긴 부분 문자열의 길이를 출력하는 프로그램을 작성한다.
+  - 여기서 포함된 부분 문자열이란 포함된 연속된 부분 문자열을 의미하지 않는다. 'CTA', 'CTC', 'CAC' 셋 모두 'CTAC'에 포함되어 있는 부분 문자열에 해당된다.
+  - 'CTAC', 'CACG' 두 문자열이 주어졌을 때, 두 문자열에 공통으로 포함된 가장 긴 부분 문자열은 'CAC'이며 이 문자열의 길이 3을 반환한다.
+- 다음 테스트케이스에는 6개의 문자열 쌍이 제공된다. 각 쌍에서 공통으로 포함된 가장 긴 부분 문자열의 길이를 출력하라.
+
+  ```python
+  testcases = [('CTAC', 'CACG'), ('CCCAGCGTCGAAACCGCTGC', 'ACACGGATGCCTGTTATGAT'), ('CAACCACAAC', 'C'), ('AATGATGCTC', ''), ('TCTCTCATCAACAACGGGGTTGACCAAACGGGCAGTGTGGTGTTCAAAGCCGACTTATAGCCTACATGACTTAGCTTGCTATTACGTTGCATTTCCACGGAAACCCGAAAGCAGGGTCAGAGCCTCGCTGATCCACCCACTAACTATATCGCCCTTCCTCAGTCATGCTCCCGCGCAAAGAGGGGCTCTCAAGGTGTTCGTAGGTTGGCCGCCCTTGTGCTCTGAGGCCTAGTAAGAGGGTATCACGTTGCGCAGCAAGGCAAAGGGGCTACCGTGAACGCAGCTATGGGATGTGCAAAACGTGATGACTAGCGTCGCGTTAGTGCTTCCAGCATAAGTCCGAGCCAGGCCGCCTAGACATGGTTACTGTTGACTTGGTCCCCTTTTGTTAAGGTGCACAATCGACAACGGGTGGTCGGCCATCTCTTGCATAGGTCGGAGTTAAAGGACCGCGAACTGGCCCTCTACGTTTTTGTCACGCGGAGTGGCGCATTAAGATA', 'CCTACTTCTTAAGGCCGGTAGTGAAGTTCACAATATGTGTTTCTACCTATTACCCAAGGTGCGAGGGTTTTGATCGGGTGTGTTTTAGGCCTATTTAACTCCATCCGGCGAGTCACGTGGTCCGCTCATGTAGTGCTTACGGGGATCGGGTGGGGTAATAGTAGCGACGATTGTGCTTAGCCCGAGCGTGAAACTGCCAATATCGATGAACGATCTGAAATACACGTTGAATTGAAGCCGCTAGTGGTTCCATCGAATAGTCCTAGGGATGAATAGATATGGGGTTACAAAGAACCCACGGCTCAGGCTGGACATTAACAGCGAGTCGCTTCTACAGAGGGCGTTCATCAACGCGGGTTTAAGATATCCCATTGGGGTCGTGACGTGTCCTCGCCCAATGCGCGACTCGATCCATACGTAGACTATTACAACGGCGTGGAATCTTAAAATTCGAAGTATCGGGACCGGCGGACGCATGCGTAATTTGTCGCCTCGAGAGG'), ('GGTTCACTGGACACCTATCAAGGGAACTTGTTTCGGTGCTACATGATGTGCACTACTCCTATTACATTCGTTCTTCTTAAGAAACAACAGTGTTGCATGGCTATGACGGCCGTATAACTCCCCAGGTAGCTGAGGCATACAGGCTCGGAGGAGGGTCATGCATCATGTGTTGTCAAACCTGTCGTGTAGACAAGCTCCGGAGAGCGATGAGGTGGGGAAAGGCTAATGAAGGTTCTATTGTTTCTATATGGTGCGCCATAGATCTATGTTTTAGGGTCCGCACTACTCGCATATGCCCACTGGCAGAAATAGCAGGGCTTGCGGGCTAAATTCCCTGCACCGAAAACAGCCATCCCCCAGATCAGTGTCGATCGCACCTGCCAATTATTGACTTTCAGTGGCTAGATCAATCTTCGAAACCAAACATTTGCTACGACGGATCGGAGCTTGTTACTGCACGACAGACGGGGCACACTATGTCGGTTCCTTGCACCTCCGGAGTCAAGGCCTGGAAAATCGCAATTCGGACCGAGATAATATTCGATCGCCTACATAGAATTGAATCGTGATGACATCGTGGACCTTGACGCTACTACTTTA', 'TGGACGTGTGTAGCTTTATCGCCTTTCGACAAAAAAAACTCATTGGTCATGTACGTTCGACTCCTGGGTCACGCTTCATCTTGAGGTTCAAAATTAGTGTAGACCCTCTAGCAACTTCGCACATCTCTCCAGATCGGTTCCTATAAAATATGTGGCTTGGGATGAGGTGAAGCCGGGTGCCGGGTGCATGTGAATACGCTGATAATCCGGAGGGGCTATACCGGCGCAGCTACTCGCCAACGCACTCCTAGTCCCCTTGGGAGTTGAGGGCACCTGACGTGTGGTGACACAGTCGAGGTT')]
+  ```
+
+## 수행단계
+
+- 다음 과정을 통해서 문제의 구조를 확인한다.
+
+  - 두 문자열의 길이가 각각 n, m인 경우 (n + 1) x (m + 1) 크기의 행렬 `dp[][]`을 만든다.
+
+    - `dp[i][j]`는 첫 번째 문자열의 앞 i 글자 문자열과 두 번째 문자열의 앞 j 글자 문자열의 최장 공통 부분 순열의 길이이다.
+    - i는 0에서 n 까지의 값을, j는 0에서 m 까지의 값을 가진다.
+    - 두 문자열이 각각 ‘CTAC’, ‘CACG’이고, 아래 표의 셀의 값이 `dp[i][j]`라고 할 때, 아래 표를 완성시켜보자.
+
+      |               | 0 (빈 문자열) | 1 (C) | 2 (CT) | 3 (CTA) | 4 (CTAC) |
+      | ------------- | ------------- | ----- | ------ | ------- | -------- |
+      | 0 (빈 문자열) |               |       |        |         |          |
+      | 1 (C)         |               |       |        |         |          |
+      | 2 (CA)        |               |       |        |         |          |
+      | 3 (CAC)       |               |       |        |         |          |
+      | 4 (CACG)      |               |       |        |         |          |
+
+  - 글자를 한 글자씩 추가해가는 과정을 복기해보자.
+    - 이 과정에서 LCS가 1에서 2로 바뀌는 경우는 어떤 경우인가?
+    - 이 과정에서 LCS가 2에서 3으로 바뀌는 경우는 어떤 경우인가?
+    - 바뀌지 않는 경우는 어떤 경우이며, 이때의 값을 위 또는 왼쪽 셀의 값과 비교해보자.
+
+- 확인한 구조를 사용해 상향식 다이나믹 프로그래밍으로 문제를 해결하는 함수를 dp/common_pattern1.py 파일에 구현한다.
+  - 반드시 위에서 제시한 구조를 사용한 상향식 다이나믹 프로그래밍으로 구현한다.
+- 제공한 테스트케이스 6쌍에 대해서, 각 쌍 별로 가장 긴 공통 부분 문자열의 길이를 출력한다.
+
+## 결과예시
+
+```
+Testcase 1의 가장 긴 공통 부분 문자열의 길이 : 3
+
+Testcase 2의 가장 긴 공통 부분 문자열의 길이 : 11
+(이하 생략)
+```
+
+## 참고사항
+
+- 없음
+
+## 제약사항
+
+- 과정에서 제시한 제약사항을 준수한다.
+
+## 개발환경
+
+- 3.9 버전 이상의 파이썬 프로그램으로 작성한다.
+
+## 보너스 과제
+
+- 없음
+
+---
+
+## 평가질문/평가가이드
+
+### [수행목표 확인]
+
+- 문제에서 지시한 형식을 준수하였는가?
+  - dp/common_pattern1.py 파일에 구현이 되어 있는지 확인한다.
+  - 수행단계에서 제시한 방식의 상향식 다이나믹 프로그래밍을 사용해 구현하였는지 확인한다.
+- 결과가 정확한가?
+
+  - 파이썬 3.9 이상에서 동작 여부를 확인한다.
+  - 프로그램의 결과는 다음과 같다. 출력 형식은 평가하지 않는다.
+
+    ```
+    Testcase 1의 가장 긴 공통 부분 문자열의 길이 : 3
+
+    Testcase 2의 가장 긴 공통 부분 문자열의 길이 : 11
+
+    Testcase 3의 가장 긴 공통 부분 문자열의 길이 : 1
+
+    Testcase 4의 가장 긴 공통 부분 문자열의 길이 : 0
+
+    Testcase 5의 가장 긴 공통 부분 문자열의 길이 : 316
+
+    Testcase 6의 가장 긴 공통 부분 문자열의 길이 : 257
+    ```
+
+### [문제에 대한 이해]
+
+- `dp[i][j]`는 첫 번째 문자열의 앞 i 글자 문자열과 두 번째 문자열의 앞 j 글자 문자열의 최장 공통 부분 순열의 길이이다. 이 행렬의 값에 해당하는 각 항목의 값을 사용하여 아래 표를 완성시켜보라.
+
+|               | 0 (빈 문자열) | 1 (C) | 2 (CT) | 3 (CTA) | 4 (CTAC) |
+| ------------- | ------------- | ----- | ------ | ------- | -------- |
+| 0 (빈 문자열) |               |       |        |         |          |
+| 1 (C)         |               |       |        |         |          |
+| 2 (CA)        |               |       |        |         |          |
+| 3 (CAC)       |               |       |        |         |          |
+| 4 (CACG)      |               |       |        |         |          |
+
+- 완성된 표는 다음과 같다.
+  | | 0 (빈 문자열) | 1 (C) | 2 (CT) | 3 (CTA) | 4 (CTAC) |
+  | ------------- | ------------- | ----- | ------ | ------- | -------- |
+  | 0 (빈 문자열) | 0 |0 | 0 | 0 | 0 |
+  | 1 (C) | 0 | 1 | 1 | 1 | 1 |
+  | 2 (CA) | 0 | 1 | 1 | 2 | 2 |
+  | 3 (CAC) | 0 | 1 | 1 | 2 | 3 |
+  | 4 (CACG) | 0 | 1 | 1 | 2 | 3 |
+
+- 위의 표에서 오른쪽 방향으로 값이 1 증가하는 경우는 어떤 경우인가?
+  - 첫 번째 문자열에 글자가 추가되어 최대 길이의 공통 부분 문자열의 크기가 증가하는 경우
+- 위의 표에서 아래쪽 방향으로 값이 1 증가하는 경우는 어떤 경우인가?
+  - 두 번째 문자열에 글자가 추가되어 최대 길이의 공통 부분 문자열의 크기가 증가하는 경우
+- 위의 표에서 오른쪽 또는 아래쪽 방향의 값이 동일한 경우는 어떤 경우인가?
+  - 글자 추가가 최대 길이의 공통 부분 문자열에 영향을 미치지 않는 경우
+- 구현한 상향식 알고리즘의 시간 복잡도를 제시하라.
+  - 두 시퀀스의 크기만큼의 이중 루프를 반복하면서 계산한다.
+  - 그러므로 두 글자의 길이가 n, m일 때 시간 복잡도는 O(nm)이다.
+
+### [코드 예시]
+
+```python
+def dna_longgest_shared_pattern_length(word1, word2):
+    word1_length = len(word1)
+    word2_length = len(word2)
+    dp = [[0] * (word2_length + 1) for _ in range(word1_length + 1)]
+    for i in range(word1_length):
+        for j in range(word2_length):
+            if word1[i] == word2[j]:    # 추가 후 마지막 글자가 같을 때
+                dp[i + 1][j + 1] = dp[i][j] + 1
+            else:                       # 추가 후 마지막 글자가 다를 때
+                dp[i + 1][j + 1] = max(dp[i][j + 1], dp[i + 1][j])
+
+    return dp[word1_length][word2_length]
+
+def main():
+    testcases = [('CTAC', 'CACG'), ('CCCAGCGTCGAAACCGCTGC', 'ACACGGATGCCTGTTATGAT'), ('CAACCACAAC', 'C'), ('AATGATGCTC', ''), ('TCTCTCATCAACAACGGGGTTGACCAAACGGGCAGTGTGGTGTTCAAAGCCGACTTATAGCCTACATGACTTAGCTTGCTATTACGTTGCATTTCCACGGAAACCCGAAAGCAGGGTCAGAGCCTCGCTGATCCACCCACTAACTATATCGCCCTTCCTCAGTCATGCTCCCGCGCAAAGAGGGGCTCTCAAGGTGTTCGTAGGTTGGCCGCCCTTGTGCTCTGAGGCCTAGTAAGAGGGTATCACGTTGCGCAGCAAGGCAAAGGGGCTACCGTGAACGCAGCTATGGGATGTGCAAAACGTGATGACTAGCGTCGCGTTAGTGCTTCCAGCATAAGTCCGAGCCAGGCCGCCTAGACATGGTTACTGTTGACTTGGTCCCCTTTTGTTAAGGTGCACAATCGACAACGGGTGGTCGGCCATCTCTTGCATAGGTCGGAGTTAAAGGACCGCGAACTGGCCCTCTACGTTTTTGTCACGCGGAGTGGCGCATTAAGATA', 'CCTACTTCTTAAGGCCGGTAGTGAAGTTCACAATATGTGTTTCTACCTATTACCCAAGGTGCGAGGGTTTTGATCGGGTGTGTTTTAGGCCTATTTAACTCCATCCGGCGAGTCACGTGGTCCGCTCATGTAGTGCTTACGGGGATCGGGTGGGGTAATAGTAGCGACGATTGTGCTTAGCCCGAGCGTGAAACTGCCAATATCGATGAACGATCTGAAATACACGTTGAATTGAAGCCGCTAGTGGTTCCATCGAATAGTCCTAGGGATGAATAGATATGGGGTTACAAAGAACCCACGGCTCAGGCTGGACATTAACAGCGAGTCGCTTCTACAGAGGGCGTTCATCAACGCGGGTTTAAGATATCCCATTGGGGTCGTGACGTGTCCTCGCCCAATGCGCGACTCGATCCATACGTAGACTATTACAACGGCGTGGAATCTTAAAATTCGAAGTATCGGGACCGGCGGACGCATGCGTAATTTGTCGCCTCGAGAGG'), ('GGTTCACTGGACACCTATCAAGGGAACTTGTTTCGGTGCTACATGATGTGCACTACTCCTATTACATTCGTTCTTCTTAAGAAACAACAGTGTTGCATGGCTATGACGGCCGTATAACTCCCCAGGTAGCTGAGGCATACAGGCTCGGAGGAGGGTCATGCATCATGTGTTGTCAAACCTGTCGTGTAGACAAGCTCCGGAGAGCGATGAGGTGGGGAAAGGCTAATGAAGGTTCTATTGTTTCTATATGGTGCGCCATAGATCTATGTTTTAGGGTCCGCACTACTCGCATATGCCCACTGGCAGAAATAGCAGGGCTTGCGGGCTAAATTCCCTGCACCGAAAACAGCCATCCCCCAGATCAGTGTCGATCGCACCTGCCAATTATTGACTTTCAGTGGCTAGATCAATCTTCGAAACCAAACATTTGCTACGACGGATCGGAGCTTGTTACTGCACGACAGACGGGGCACACTATGTCGGTTCCTTGCACCTCCGGAGTCAAGGCCTGGAAAATCGCAATTCGGACCGAGATAATATTCGATCGCCTACATAGAATTGAATCGTGATGACATCGTGGACCTTGACGCTACTACTTTA', 'TGGACGTGTGTAGCTTTATCGCCTTTCGACAAAAAAAACTCATTGGTCATGTACGTTCGACTCCTGGGTCACGCTTCATCTTGAGGTTCAAAATTAGTGTAGACCCTCTAGCAACTTCGCACATCTCTCCAGATCGGTTCCTATAAAATATGTGGCTTGGGATGAGGTGAAGCCGGGTGCCGGGTGCATGTGAATACGCTGATAATCCGGAGGGGCTATACCGGCGCAGCTACTCGCCAACGCACTCCTAGTCCCCTTGGGAGTTGAGGGCACCTGACGTGTGGTGACACAGTCGAGGTT')]
+    for i, tc in enumerate(testcases):
+        word1, word2 = tc
+        print(f"Testcase {i + 1}의 가장 긴 공통 부분 문자열의 길이 : {dna_longgest_shared_pattern_length(word1, word2)}")
+        print()
+
+if __name__ == '__main__':
+    main()
+```
+
+---
+
+# 문제 14. DNA의 공통 패턴 (2)
+
+## 문제 분류
+
+- 중요도 : 4/5
+- 난이도 : 3/5
+- 목표 수행 시간 : 4시간
+
+## 스토리
+
+"질문을 잘못 하신 것 같은데요?"
+
+E 연구원이 표정을 찡그리며 이야기했다.
+
+"패턴을 찾는 법을 여쭈셔야 했었는데, 가장 긴 패턴의 길이를 물어보셨네요."
+
+그러자 V 연구원이 허탈한 표정으로 말했다.
+
+"아니, 이렇게 물으면 패턴 찾는 방법도 가르쳐줄거라 생각했죠."
+
+그런데 갑자기 V 연구원이 정색하며 말을 이었다.
+
+"그런데, 이 정도 답변이면, 남은 문제는 해결할 수 있을 것 같아요!"
+
+## 수행목표
+
+- 두 개의 문자열이 주어진다. 두 문자열에 모두 포함되어 있는 부분 문자열 중 가장 긴 부분 문자열을 출력하는 프로그램을 작성한다.
+  - 여기서 포함된 부분 문자열이란 포함된 연속된 부분 문자열을 의미하지 않는다. 'CTA', 'CTC', 'CAC' 셋 모두 'CTAC'에 포함되어 있는 부분 문자열에 해당된다.
+  - 'CTAC', 'CACG' 두 문자열이 주어졌을 때, 두 문자열에 공통으로 포함된 가장 긴 부분 문자열은 'CAC'이며 이 문자열을 출력한다.
+- 다음 테스트케이스에는 6개의 문자열 쌍이 제공된다. 각 쌍에서 공통으로 포함된 가장 긴 부분 문자열의 길이를 출력하라.
+  ```python
+  testcases = [('CTAC', 'CACG'), ('CCCAGCGTCGAAACCGCTGC', 'ACACGGATGCCTGTTATGAT'), ('CAACCACAAC', 'C'), ('AATGATGCTC', ''), ('TCTCTCATCAACAACGGGGTTGACCAAACGGGCAGTGTGGTGTTCAAAGCCGACTTATAGCCTACATGACTTAGCTTGCTATTACGTTGCATTTCCACGGAAACCCGAAAGCAGGGTCAGAGCCTCGCTGATCCACCCACTAACTATATCGCCCTTCCTCAGTCATGCTCCCGCGCAAAGAGGGGCTCTCAAGGTGTTCGTAGGTTGGCCGCCCTTGTGCTCTGAGGCCTAGTAAGAGGGTATCACGTTGCGCAGCAAGGCAAAGGGGCTACCGTGAACGCAGCTATGGGATGTGCAAAACGTGATGACTAGCGTCGCGTTAGTGCTTCCAGCATAAGTCCGAGCCAGGCCGCCTAGACATGGTTACTGTTGACTTGGTCCCCTTTTGTTAAGGTGCACAATCGACAACGGGTGGTCGGCCATCTCTTGCATAGGTCGGAGTTAAAGGACCGCGAACTGGCCCTCTACGTTTTTGTCACGCGGAGTGGCGCATTAAGATA', 'CCTACTTCTTAAGGCCGGTAGTGAAGTTCACAATATGTGTTTCTACCTATTACCCAAGGTGCGAGGGTTTTGATCGGGTGTGTTTTAGGCCTATTTAACTCCATCCGGCGAGTCACGTGGTCCGCTCATGTAGTGCTTACGGGGATCGGGTGGGGTAATAGTAGCGACGATTGTGCTTAGCCCGAGCGTGAAACTGCCAATATCGATGAACGATCTGAAATACACGTTGAATTGAAGCCGCTAGTGGTTCCATCGAATAGTCCTAGGGATGAATAGATATGGGGTTACAAAGAACCCACGGCTCAGGCTGGACATTAACAGCGAGTCGCTTCTACAGAGGGCGTTCATCAACGCGGGTTTAAGATATCCCATTGGGGTCGTGACGTGTCCTCGCCCAATGCGCGACTCGATCCATACGTAGACTATTACAACGGCGTGGAATCTTAAAATTCGAAGTATCGGGACCGGCGGACGCATGCGTAATTTGTCGCCTCGAGAGG'), ('GGTTCACTGGACACCTATCAAGGGAACTTGTTTCGGTGCTACATGATGTGCACTACTCCTATTACATTCGTTCTTCTTAAGAAACAACAGTGTTGCATGGCTATGACGGCCGTATAACTCCCCAGGTAGCTGAGGCATACAGGCTCGGAGGAGGGTCATGCATCATGTGTTGTCAAACCTGTCGTGTAGACAAGCTCCGGAGAGCGATGAGGTGGGGAAAGGCTAATGAAGGTTCTATTGTTTCTATATGGTGCGCCATAGATCTATGTTTTAGGGTCCGCACTACTCGCATATGCCCACTGGCAGAAATAGCAGGGCTTGCGGGCTAAATTCCCTGCACCGAAAACAGCCATCCCCCAGATCAGTGTCGATCGCACCTGCCAATTATTGACTTTCAGTGGCTAGATCAATCTTCGAAACCAAACATTTGCTACGACGGATCGGAGCTTGTTACTGCACGACAGACGGGGCACACTATGTCGGTTCCTTGCACCTCCGGAGTCAAGGCCTGGAAAATCGCAATTCGGACCGAGATAATATTCGATCGCCTACATAGAATTGAATCGTGATGACATCGTGGACCTTGACGCTACTACTTTA', 'TGGACGTGTGTAGCTTTATCGCCTTTCGACAAAAAAAACTCATTGGTCATGTACGTTCGACTCCTGGGTCACGCTTCATCTTGAGGTTCAAAATTAGTGTAGACCCTCTAGCAACTTCGCACATCTCTCCAGATCGGTTCCTATAAAATATGTGGCTTGGGATGAGGTGAAGCCGGGTGCCGGGTGCATGTGAATACGCTGATAATCCGGAGGGGCTATACCGGCGCAGCTACTCGCCAACGCACTCCTAGTCCCCTTGGGAGTTGAGGGCACCTGACGTGTGGTGACACAGTCGAGGTT')]
+  ```
+
+## 수행단계
+
+- 이전 문제에서 작성했던 dp[][]를 다시 살펴보자. 다음은 두 염기 서열 시퀀스가 CTAC, CACG인 경우의 dp[][] 행렬을 테이블로 나타낸 것이다.
+
+  |               | 0 (빈 문자열) | 1 (C) | 2 (CT) | 3 (CTA) | 4 (CTAC) |
+  | ------------- | ------------- | ----- | ------ | ------- | -------- |
+  | 0 (빈 문자열) | 0             | 0     | 0      | 0       | 0        |
+  | 1 (C)         | 0             | 1     | 1      | 1       | 1        |
+  | 2 (CA)        | 0             | 1     | 1      | 2       | 2        |
+  | 3 (CAC)       | 0             | 1     | 1      | 2       | 3        |
+  | 4 (CACG)      | 0             | 1     | 1      | 2       | 3        |
+
+  - 이 과정에서 LCS가 1에서 2로 바뀌는 경우는 어떤 경우인가?
+  - 이 과정에서 LCS가 2에서 3으로 바뀌는 경우는 어떤 경우인가?
+  - 바뀌지 않는 경우는 어떤 경우이며, 이때의 값을 위 또는 왼쪽 셀의 값과 비교해보자.
+
+- 위 테이블의 값의 변화 상황을 사용해서 가장 긴 공통 부분 문자열을 찾는 방법을 정리한다.
+- 위에서 정리한 방법을 사용해 가장 긴 공통 부분 문자열을 찾아 반환하는 함수를 dp/common_pattern2.py 파일에 구현한다.
+- 첨부한 파일에 포함된 15개의 배열에 대해서 실행하고 그 결과를 출력한다.
+
+## 결과예시
+
+```
+Testcase 1의 가장 긴 공통 부분 문자열 : CAC
+
+Testcase 2의 가장 긴 공통 부분 문자열 : CACGGACCGTG
+
+(이하 생략)
+```
+
+## 참고사항
+
+- 없음
+
+## 제약사항
+
+- 과정에서 제시한 제약사항을 준수한다.
+
+## 개발환경
+
+- 3.9 버전 이상의 파이썬 프로그램으로 작성한다.
+
+## 보너스 과제
+
+- 없음
+
+---
+
+## 평가질문/평가가이드
+
+### [수행목표 확인]
+
+- 문제에서 지시한 형식을 준수하였는가?
+  - dp/common_pattern2.py 파일에 구현이 되어 있는지 확인한다.
+  - dp 행렬을 추적하여 가장 긴 공통 문자열을 찾는 형식으로 구현하였는지 확인한다.
+- 결과가 정확한가?
+
+  - 파이썬 3.9 이상에서 동작 여부를 확인한다.
+  - 프로그램의 결과는 다음과 같다. 출력 형식은 평가하지 않는다.
+
+    ```
+    Testcase 1의 가장 긴 공통 부분 문자열 : CAC
+
+    Testcase 2의 가장 긴 공통 부분 문자열 : CACGGACCGTG
+
+    Testcase 3의 가장 긴 공통 부분 문자열 : C
+
+    Testcase 4의 가장 긴 공통 부분 문자열 :
+
+    Testcase 5의 가장 긴 공통 부분 문자열 : CTCTCTAACCGGGGTTACAAATGTGTTTCACCATTACCCATGCAGTTGATCGTTGTTTAGGAAACCCACGGCGAGCCGTGTCCCCATTATGCTTCGATCGGGGGGGTAATGTCGAGTTGGCGCCCGGCTCTGCCTAGTAAGAGTACACGTTGAGAAGGCAGGGTCCTGAAAGCTAGGGATGAAAATATGACAGCCGCTAGTGCTTCAGCATGTCCGAGCCACCGCTAGACATGGTTACTGTTGATGGCCTGTTAGTGACATACAACGGGTGGATCTTAATCGAGTAGGACCGCGACGCTCTATTTGTCGCTCGAGA
+
+    Testcase 6의 가장 긴 공통 부분 문자열 : TGGACGTGTGTGCTTTATCCCTTTCACAAAAAAAATCATGGCATGACGCGACTCCTGGGCACGCTTCATCTTGGTTCAAATTGTGTAGACCTCAGCAACTTGAATCTCTCCAGATCGGTTCCTATAAAAATGGGCTTGGGATGAGAAGCCTCCGGTGCATGTGAATACGCTGATAATCCGAGCTAACGGCGAGCTACTGCCAACGCACCTAGTCCCTTGGGAGTTGAGGGACCTGACGTGTGGTGAACAGTCGAGTT
+
+    ```
+
+### [문제에 대한 이해]
+
+- 상향식 다이나믹 프로그래밍의 하위 문제를 해결하기 위해서 사용한 dp 리스트를 사용해서 가장 긴 공통 부분 문자열을 찾는 방식을 설명하라.
+
+  - 두 염기가 추가된 상황에서 두 염기가 같으면 최장 공통 순열의 길이가 증가한다.
+  - 즉 대각선 방향으로 값이 증가될 때, 이 때 추가된 염기가 최장 공통 순열에 포함되는 염기가 된다.
+  - lcs_table을 역방향으로 추적하면서 공통 시퀀스의 각각의 염기를 찾는다.
+  - 복원한 시퀀스를 뒤집는다. (역방향 추적 시에 순서대로 추가한 경우)
+
+### [코드 예시]
+
+```python
+def dna_longgest_shared_pattern(word1, word2):
+    word1_length = len(word1)
+    word2_length = len(word2)
+
+    dp = [[0] * (word2_length + 1) for _ in range(word1_length + 1)]
+    # 두 문자열의 첫 번째 글자부터 한 글자씩 추가하면서 dp를 계산한다.
+    for i in range(word1_length):
+        for j in range(word2_length):
+            if word1[i] == word2[j]:    # 추가 후 마지막 글자가 같을 때
+                dp[i + 1][j + 1] = dp[i][j] + 1
+            else:                       # 추가 후 마지막 글자가 다를 때
+                dp[i + 1][j + 1] = max(dp[i][j + 1], dp[i + 1][j])
+
+    # dp 배열을 역순으로 추적한다.
+    longest_shared_pattern = ''
+    i = len(word1)
+    j = len(word2)
+    while True:
+        # 둘 중 하나의 문자열이 비거나 dp[i][j] = 0이면 종료
+        if i == 0 or j == 0 or dp[i][j] == 0:
+            break
+        # 두 문자열의 마지막 글자를 빼도 값이 같다면 양쪽 글자 모두 최장 공통부분문자열에 포함되지 않는다.
+        if dp[i][j] == dp[i - 1][j - 1]:
+            i -= 1
+            j -= 1
+        # 두 문자열의 마지막 글자 중 하나가 최장 공통부분문자열이 되는 상황이므로, 같은 문자열이 될 때까지 이동한다.
+        elif dp[i][j] == dp[i - 1][j]:
+            i -= 1
+        elif dp[i][j] == dp[i][j - 1]:
+            j -= 1
+        # 두 문자열의 마지막 글자가 같은 상황 - 최장 공통부분문자열의 앞 부분에 해당 글자를 추가한다.
+        else:
+            longest_shared_pattern = word1[i - 1] + longest_shared_pattern
+            i -= 1
+            j -= 1
+    return longest_shared_pattern
+
+def main():
+    testcases = [('CTAC', 'CACG'), ('CCCAGCGTCGAAACCGCTGC', 'ACACGGATGCCTGTTATGAT'), ('CAACCACAAC', 'C'), ('AATGATGCTC', ''), ('TCTCTCATCAACAACGGGGTTGACCAAACGGGCAGTGTGGTGTTCAAAGCCGACTTATAGCCTACATGACTTAGCTTGCTATTACGTTGCATTTCCACGGAAACCCGAAAGCAGGGTCAGAGCCTCGCTGATCCACCCACTAACTATATCGCCCTTCCTCAGTCATGCTCCCGCGCAAAGAGGGGCTCTCAAGGTGTTCGTAGGTTGGCCGCCCTTGTGCTCTGAGGCCTAGTAAGAGGGTATCACGTTGCGCAGCAAGGCAAAGGGGCTACCGTGAACGCAGCTATGGGATGTGCAAAACGTGATGACTAGCGTCGCGTTAGTGCTTCCAGCATAAGTCCGAGCCAGGCCGCCTAGACATGGTTACTGTTGACTTGGTCCCCTTTTGTTAAGGTGCACAATCGACAACGGGTGGTCGGCCATCTCTTGCATAGGTCGGAGTTAAAGGACCGCGAACTGGCCCTCTACGTTTTTGTCACGCGGAGTGGCGCATTAAGATA', 'CCTACTTCTTAAGGCCGGTAGTGAAGTTCACAATATGTGTTTCTACCTATTACCCAAGGTGCGAGGGTTTTGATCGGGTGTGTTTTAGGCCTATTTAACTCCATCCGGCGAGTCACGTGGTCCGCTCATGTAGTGCTTACGGGGATCGGGTGGGGTAATAGTAGCGACGATTGTGCTTAGCCCGAGCGTGAAACTGCCAATATCGATGAACGATCTGAAATACACGTTGAATTGAAGCCGCTAGTGGTTCCATCGAATAGTCCTAGGGATGAATAGATATGGGGTTACAAAGAACCCACGGCTCAGGCTGGACATTAACAGCGAGTCGCTTCTACAGAGGGCGTTCATCAACGCGGGTTTAAGATATCCCATTGGGGTCGTGACGTGTCCTCGCCCAATGCGCGACTCGATCCATACGTAGACTATTACAACGGCGTGGAATCTTAAAATTCGAAGTATCGGGACCGGCGGACGCATGCGTAATTTGTCGCCTCGAGAGG'), ('GGTTCACTGGACACCTATCAAGGGAACTTGTTTCGGTGCTACATGATGTGCACTACTCCTATTACATTCGTTCTTCTTAAGAAACAACAGTGTTGCATGGCTATGACGGCCGTATAACTCCCCAGGTAGCTGAGGCATACAGGCTCGGAGGAGGGTCATGCATCATGTGTTGTCAAACCTGTCGTGTAGACAAGCTCCGGAGAGCGATGAGGTGGGGAAAGGCTAATGAAGGTTCTATTGTTTCTATATGGTGCGCCATAGATCTATGTTTTAGGGTCCGCACTACTCGCATATGCCCACTGGCAGAAATAGCAGGGCTTGCGGGCTAAATTCCCTGCACCGAAAACAGCCATCCCCCAGATCAGTGTCGATCGCACCTGCCAATTATTGACTTTCAGTGGCTAGATCAATCTTCGAAACCAAACATTTGCTACGACGGATCGGAGCTTGTTACTGCACGACAGACGGGGCACACTATGTCGGTTCCTTGCACCTCCGGAGTCAAGGCCTGGAAAATCGCAATTCGGACCGAGATAATATTCGATCGCCTACATAGAATTGAATCGTGATGACATCGTGGACCTTGACGCTACTACTTTA', 'TGGACGTGTGTAGCTTTATCGCCTTTCGACAAAAAAAACTCATTGGTCATGTACGTTCGACTCCTGGGTCACGCTTCATCTTGAGGTTCAAAATTAGTGTAGACCCTCTAGCAACTTCGCACATCTCTCCAGATCGGTTCCTATAAAATATGTGGCTTGGGATGAGGTGAAGCCGGGTGCCGGGTGCATGTGAATACGCTGATAATCCGGAGGGGCTATACCGGCGCAGCTACTCGCCAACGCACTCCTAGTCCCCTTGGGAGTTGAGGGCACCTGACGTGTGGTGACACAGTCGAGGTT')]
+    for i, tc in enumerate(testcases):
+        word1, word2 = tc
+        print(f"Testcase {i + 1}의 가장 긴 공통 부분 문자열 : {dna_longgest_shared_pattern(word1, word2)}")
+        print()
+
+if __name__ == '__main__':
+    main()
+
+```
