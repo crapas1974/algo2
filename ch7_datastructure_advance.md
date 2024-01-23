@@ -306,41 +306,37 @@ K 연구원은 이진 검색 트리에 데이터를 추가할 때, 이와 같이
 
 ## 수행목표
 
-- 이진 트리가 주어진다. 이 이진 트리에서 부모와 자식 사이의 거리를 1이라고 하고, 트리에서 가장 거리가 먼 두 노드의 거리를 트리의 지름이라고 한다.
-  - 이렇게 트리의 지름을 정의했을 때 어떤 트리의 지름을 계산해 반환하는 함수를 구현한다.
-- 다음 파이썬 코드는 세 개의 트리를 만들 수 있는 데이터와 이 데이터를 사용해 트리를 생성하는 코드이다. 만들어진 세 개의 트리에 대해서 트리의 지름을 구하고 이를 출력한다.
+- 트리에서 두 노드의 거리는 두 노드 사이에 연결의 갯수로 정의한다. 이 정의를 따르면 부모 노드와 자식 노드의 사이의 거리는 1이된다. 그리고 어떤 트리에서 거리가 가장 먼 두 노드 사이의 연결을 트리의 지름이라고 하며, 이 두 노드 사이의 거리를 트리의 지름의 길이라 한다.
+- 어떤 이진 트리의 루트 노드가 주어졌을 때, 이 트리의 지름의 길이를 반환하는 함수를 구현한다.
+- 첨부한 파이썬 코드를 사용해 트리 7개의 루트 노드를 얻을 수 있다. 이 4개의 트리에 대애서 각각의 트리의 지름을 출력한다.
 
 ## 수행단계
 
-- 문제의 구조를 분석하고, 이 문제를 상향식 접근법과 하향식 접근법 각각을 사용해서 해결하는 경우의 해결 방법을 정리한다.
-- 반입이 허용된 화석 가치의 총 합과 화석 별 가치가 포함된 배열이 주어진다. 이 상황에서 정확하게 반입 허용 화석 가치를 구성할 수 있는 모든 반입 목록을 작성할 때, 이 반입 목록의 개수를 반환하는 함수를 dp_exer/fossil1.py 파일에 구현한다.
-  - 상향식 접근법과 하향식 접근법 각각을 사용하는 두 개의 별도의 함수를 모두 구현한다.
-  - 하향식 접근법으로 구현하는 경우 메모이제이션을 적용한다.
-- 주어진 테스트케이스에 대해서 결과를 구한 후, 이를 출력한다.
-  - 상향식, 하향식 각 접근법으로 답을 구하는데 걸린 시간을 각각 측정해 출력한다.
-- 상향식, 하향식 두 접근법의 차이를 구현 방식과 함수의 성능 양 측면에서 비교해보자.
+- 다음 예제와 예제에 대한 질문을 통해서 문제 해결의 실마리를 찾는다.
+  - 다음 그림의 트리에서 루트 노드의 왼쪽 서브 트리의 높이는 2, 오른쪽 서브 트리의 높이는 2, 그리고 트리 지름의 길이는 6이다.
+    ![Alt text](ch7_1.png)
+  - 다음 그림의 트리에서 루트 노드의 왼쪽 서브 트리의 높이는 3, 오른쪽 서브 트리의 높이는 0이다.
+    ![Alt text](ch7_2.png)
+    - 이 트리에서 루트 노드를 지나야 연결이 가능한 두 노드 사이에 가장 거리가 먼 두 노드와, 두 노드 사이의 거리는 얼마인가?
+    - 이 트리에서 가장 먼 거리가 먼 두 노드와, 두 노드 사이의 거리 (즉 트리의 지름의 길이)는 얼마인가?
+- 이 문제는 다이나믹 프로그래밍 예제에서 그러했듯 하향식, 상향식 두 가지 접근 방법 각각을 사용해 해결할 수 있다. 두 가지 방법 중 하나를 택해서 구현 방법을 정리한다.
+- 주어진 노드를 루트로 하는 트리의 지름을 구하는 함수를 ds_more/tree_diameter1.py 파일에 구현한다.
+- 첨부한 파이썬 코드의 get_testcases 함수는 어떤 트리의 루트를 항목으로 하는 리스트를 반환한다. 여기에는 7개 트리의 루트가 포함되어 있다.
+  - 이 7개의 트리의 지름의 값을 출력한다.
+  - 첨부한 파이썬 코드에는 이진 트리를 만드는 파이썬 클래스가 포함되어 있다. 이 클래스의 구조를 확인한 후 구현해야 한다.
 
 ## 결과예시
 
 ```
-하향식 다이나믹 프로그래밍
-    수행 시간: 0.00033283233642578125 초
-    TC 1에서 생성할 수 있는 반입 목록의 경우의 수 : 0
-    수행 시간: 1.0967254638671875e-05 초
-    TC 2에서 생성할 수 있는 반입 목록의 경우의 수 : 5
-    수행 시간: 0.0011639595031738281 초
-(중간 생략)
-상향식 다이나믹 프로그래밍
-    수행 시간: 9.226799011230469e-05 초
-    TC 1에서 생성할 수 있는 반입 목록의 경우의 수 : 0
-    수행 시간: 2.1457672119140625e-06 초
-    TC 2에서 생성할 수 있는 반입 목록의 경우의 수 : 5
+Testcase 1 트리의 지름 : 6
+Testcase 2 트리의 지름 : 6
+(이하 생략)
 (이하 생략)
 ```
 
 ## 참고사항
 
-- 이 문제의 테스트케이스 중 처음 10개는 이전 문제의 테스트케이스와 동일하며, 뒤의 2개가 추가되었다.
+- 없음
 
 ## 제약사항
 
@@ -361,61 +357,151 @@ K 연구원은 이진 검색 트리에 데이터를 추가할 때, 이와 같이
 ### [수행목표 확인]
 
 - 문제에서 지시한 형식을 준수하였는가?
-  - dp_exer/fossil1.py 파일에 구현이 되어 있는지 확인한다.
-  - 상향식 다이나믹 프로그래밍, 메모이제이션을 적용한 하향식 다이나믹 프로그래밍 방법을 사용한 각각의 함수가 구현되어 있는지 확인한다.
+  - ds_more/tree_diameter1.py 파일에 구현이 되어 있는지 확인한다.
 - 제약사항을 준수하였는가?
   - 허용되지 않은 모듈, 라이브러리, 패키지의 사용 여부 (직접 구현한 경우 사용 가능하다.)
   - 입력과 무관하게 프로그램이 처리되지 않은 예외를 발생시키지 않고 정상적으로 종료되어야 한다.
 - 결과가 정확한가?
 
   - 파이썬 3.9 이상에서 동작 여부를 확인한다.
-  - 상향식, 하향식 두 접근 방법의 결과는 동일해야 한다.
   - 결과는 다음과 같다. 출력 형식은 평가하지 않는다. 실행 시간은 다를 수 있다.
 
-```
-하향식 다이나믹 프로그래밍
-    수행 시간: 0.00033283233642578125 초
-    TC 1에서 생성할 수 있는 반입 목록의 경우의 수 : 0
-    수행 시간: 1.0967254638671875e-05 초
-    TC 2에서 생성할 수 있는 반입 목록의 경우의 수 : 5
-    수행 시간: 0.0011639595031738281 초
-    TC 3에서 생성할 수 있는 반입 목록의 경우의 수 : 585
-    수행 시간: 0.041081905364990234 초
-    TC 4에서 생성할 수 있는 반입 목록의 경우의 수 : 1722389
-    수행 시간: 0.0815131664276123 초
-    TC 5에서 생성할 수 있는 반입 목록의 경우의 수 : 2391508958235
-    수행 시간: 0.1903541088104248 초
-    TC 6에서 생성할 수 있는 반입 목록의 경우의 수 : 357746987
-상향식 다이나믹 프로그래밍
-    수행 시간: 9.226799011230469e-05 초
-    TC 1에서 생성할 수 있는 반입 목록의 경우의 수 : 0
-    수행 시간: 2.1457672119140625e-06 초
-    TC 2에서 생성할 수 있는 반입 목록의 경우의 수 : 5
-    수행 시간: 2.7894973754882812e-05 초
-    TC 3에서 생성할 수 있는 반입 목록의 경우의 수 : 585
-    수행 시간: 0.000186920166015625 초
-    TC 4에서 생성할 수 있는 반입 목록의 경우의 수 : 1722389
-    수행 시간: 0.00030112266540527344 초
-    TC 5에서 생성할 수 있는 반입 목록의 경우의 수 : 2391508958235
-    수행 시간: 0.0003070831298828125 초
-    TC 6에서 생성할 수 있는 반입 목록의 경우의 수 : 357746987
-```
+    ```
+    Testcase 1 트리의 지름 : 6
+    Testcase 2 트리의 지름 : 6
+    Testcase 3 트리의 지름 : 6
+    Testcase 4 트리의 지름 : 7
+    Testcase 5 트리의 지름 : 1
+    Testcase 6 트리의 지름 : 43
+    Testcase 7 트리의 지름 : 55
+    ```
 
 ### [문제에 대한 이해]
 
-- 문제의 구조를 설명하라.
-- 상향식 접근법, 하향식 접근법 각각의 해결 전략을 제시하라.
-- 두 접근법의 차이를 분석하라. 만약 두 함수의 실행 시간 기준의 성능 차이가 존재한다면, 분석을 통해 이 차이를 설명할 수 있어야 한다.
+- (상향식 접근 방법으로 구현한 경우)가장 작은 문제는 무엇인가?
+  - 문제를 특정 노드를 지나가는 트리의 지름으로 정의하면, 리프 노드에 가까울 수록 서브 트리를 감안한 트리의 지름을 계산해야 하므로, 가장 작은 문제는 루트에서 가장 먼 노드를 지나가는 트리의 지름을 구하는 문제가 된다.
+- (상향식 접근 방법으로 구현한 경우)상향식 접근 방법으로 트리의 지름을 계산하는 방법을 설명하라.
+  - 1단계에서는 트리의 레벨 별로 각 노드를 분류한다.
+  - 레벨 별 노드를 저장하는 딕셔너리를 만들고, BFS 방식으로 트리를 탐색해 트리의 모든 노드를 레벨 별 딕셔너리에 저장한다.
+  - 2단계에서는 레벨이 높은, 즉 루트 노드에서 먼 노드들부터 상향식으로 모든 노드를 지나가는 트리의 지름을 구해서 올라간다.
+  - 이를 위해서 작은 문제의 결과를 저장할 딕셔너리 diameter와 height를 선언한다.
+  - 상위 문제의 높이는 하위 문제들 (즉 왼쪽 서브트리의 높이, 오른쪽 서브 트리의 높이) 의 최대값 + 1이 된다.
+  - 상위 문제의 지름은 하위 문제들의 최대값이다. 이 때 하위 문제들은 트리의 지름에 해당하는 경로가 현재 노드를 지나가는 경우(왼쪽 서브 트리의 높이 + 오른쪽 서브 트리의 높이 + 2), 현재 노드를 지나가지 않고 왼쪽 서브 트리에 트리의 지름이 속한 경우 (왼쪽 서브 트리의 지름), 오른쪽 서브 트리에 트리의 지름이 속한 경우 (오른쪽 서브 트리의 지름)으로 구성된다.
+  - 최종적으로 루트 노드를 기준으로 트리의 지름을 반환한다.
+- (하향식 접근 방법으로 구현한 경우)문제의 구조를 설명하는 점화식을 제시하라.
+  - 트리의 높이는 리프 노드 중 루트와 가장 먼 리프 노드와의 거리이다.
+  - 이 리프 노드는 루트 노드의 두 자식 노드 중 하나의 자손 노드이다.
+  - 부모와 자식 노드 사이의 거리는 1이다.
+  - 이상의 상황을 종합해 node를 루트로 하는 서브 트리의 높이를 `height(node)`라고 하면 점화식은 다음과 같이 작성할 수 있다.
+  - `height(node) = max(height(node.left), height(node.right)) + 1`
+- 구현한 함수의 시간 복잡도를 제시하라.
+  - 상향식, 하향식 모두 최적 구현은 O(n) 시간 복잡도를 가진다.
 
 ### [코드 예시]
 
 ```python
+from tree_diameter_data import get_testcases
+from collections import deque
 
+# 트리의 높이 계산
+def height(node, memo):
+    # 메모이제이션
+    if node in memo:
+        return memo[node]
+    if node == None:
+        return -1
+
+    # 왼쪽 자식 노드의 높이와 오른쪽 자식 노드의 높이를 사용해 현재 노드의 높이를 계산 (재귀 호출)
+    memo[node] = 1 + max(height(node.left, memo), height(node.right, memo))
+    return memo[node]
+
+# 트리의 지름 계산 하향식 접근 방법
+def tree_diameter2(node, memo = None):
+    # 메모이제이션에 사용할 딕셔너리 초기화
+    if memo == None:
+        memo = {}
+    if node == None:
+        return 0
+    # 왼쪽 트리의 지름
+    left_diameter = tree_diameter2(node.left, memo)
+    # 오른쪽 트리의 지름
+    right_diameter = tree_diameter2(node.right, memo)
+    # 현재 트리의 지름은
+    #   1. 현재 노드를 지나는 경로의 최고 거리
+    #   2. 왼쪽 서브 트리의 지름
+    #   3. 오른쪽 서브 트리의 지름
+    # 중 최대값이다.
+    return max(height(node.left, memo) + height(node.right, memo) + 2,
+                left_diameter,
+                right_diameter)
+
+# 트리의 지름 계산 상향식 접근 방법
+def tree_diameter1(root, memo = None):
+    if not root:
+        return {}
+
+    # 1단계 - 레벨별 노드를 저장하는 딕셔너리를 생성한다.
+    # 레벨별 노드를 저장할 딕셔너리
+    level_dict = {}
+    # 루트 노드를 레벨과 함께 큐에 저장한다.
+    queue = deque([(root, 0)])
+    # 트리의 최대 레벨
+    max_level = 0
+
+    while queue:    # 큐가 빌 때까지 반복
+        node, level = queue.popleft()   # 큐의 첫번째 항목의 노드와 레벨
+
+        # 현재 레벨의 노드를 딕셔너리에 추가
+        if level not in level_dict:
+            level_dict[level] = []
+            max_level = level
+        level_dict[level].append(node)
+
+        # 자식 노드를 큐에 추가
+        if node.left:
+            queue.append((node.left, level + 1))
+        if node.right:
+            queue.append((node.right, level + 1))
+
+    # 2단계 - 상향식으로 모든 노드의 트리의 지름을 구한다.
+    diameter = {}
+    height = {}
+    # 최대 레벨, 즉 가장 아래쪽부터 역순으로 루트까지 반복
+    for i in range(max_level, -1, -1):
+        # 각 레벨의 모든 노드에 대해서
+        for node in level_dict[i]:
+            if node.left == None:       # 왼쪽 자식 노드가 없으면
+                left_height = -1
+                left_diameter = -1
+            else:                       # 왼쪽 자식 노드가 있으면
+                left_height = height[node.left]
+                left_diameter = diameter[node.left]
+            if node.right == None:      # 오른쪽 자식 노드가 없으면
+                right_height = -1
+                right_diameter = -1
+            else:                       # 오른쪽 자식 노드가 있으면
+                right_height = height[node.right]
+                right_diameter = diameter[node.right]
+
+            # 높이와 지름을 계산
+            height[node] = 1 + max(left_height, right_height)
+            diameter[node] = max(left_height + right_height + 2,
+                                    left_diameter,
+                                    right_diameter)
+    return diameter[root]
+
+def main():
+    testcases = get_testcases()
+    for i, tc in enumerate(testcases):
+        print(f"Testcase {i + 1} 트리의 지름 : {tree_diameter1(tc)}")
+
+if __name__ == "__main__":
+    main()
 ```
 
 ---
 
-# 문제 4. 트리의 지름에서 가장 먼 녀석들
+# 문제 4. 가장 사이가 먼 이들
 
 ## 문제 분류
 
@@ -425,39 +511,35 @@ K 연구원은 이진 검색 트리에 데이터를 추가할 때, 이와 같이
 
 ## 스토리
 
-“그 경우의 수가 그 경우의 수가 아니다!”
+개체의 세대가 바뀜에 따라서 유전자의 돌연변이는 조금씩 생기기 마련이다. 즉, 현재의 트리에서 관계가 가장 먼 두 개체를 비교하면, 조금 더 길게 번식하는 미생물을 만드는 단서를 찾을 수 있을지도 모른다.
 
-진화생물학 연구그룹의 그룹장이 E 연구원에게 핀잔을 줬다. 우리는 ‘경우의 수'라는 말을 쓸 때, ‘경우의 개수'로 쓰기도 하지만 ‘모든 경우의 목록'에도 경우의 수라는 표현을 쓰곤 한다. 물론 E 연구원도 ‘경우의 수’가 그 ‘경우의 수’일지도 모른다는 생각은 했지만, 계산 결과 나온 어마어마한 크기의 ‘경우의 수’를 보고, 전체 가능한 목록을 가지고 오라는 이야기는 아니겠지 생각했던 것이다. 그래서, E 연구원은 그룹장에게 되물었다.
-
-“2조개가 넘는 목록을 다 보시겠다구요?”
-
-그룹장의 말.
-
-“내가 알아서 할 테니까…”
+E 연구원은 트리의 지름 뿐 아니라, 지름에 해당하는 가장 먼 두 개체를 찾는 작업에 들어갔다.
 
 ## 수행목표
 
-- 이전 문제에서 해결한 방법 중 상향식 접근법을 사용해서 문제를 해결하면서 동시에 목록의 개수 뿐 아니라 모든 목록을 출력하는 프로그램을 작성한다.
-- 다음 데이터를 사용해 각 테스트케이스의 목록의 개수 및 모든 목록을 구하고, 이를 출력한다.
-
-```python
-TC1 = (501, [34, 47, 55])
-TC2 = (5, [1, 2, 3])
-TC3 = (25, [3, 4, 5, 6])
-```
+- 트리의 지름을 찾는 알고리즘을 사용해 트리에서 가장 먼 두 노드의 쌍을 찾는 함수를 구현한다.
+- 이 함수를 사용해 트리에서 가장 먼 두 노드의 쌍을 찾아 이를 출력한다.
+  - 트리에서 가장 먼 두 노드의 쌍은 여러개가 존재할 수 있다. 모든 쌍을 찾아 출력한다.
+- 테스트데이터는 이전 문제와 동일한 첨부 파일을 사용해 7개의 테스트케이스를 사용할 수 있다.
+  - 출력하는 값은 노드의 값을 사용해 출력한다. 테스트케이스 1의 트리는 120의 값을 가진 노드와 160의 값을 가진 노드, 그리고 140의 값을 가진 노드와 160의 값을 가진 노드 간 거리가 6으로 가장 길다. 이 경우 [(120, 160), (140, 160)]을 출력한다.
 
 ## 수행단계
 
-- 이전 문제에서 구현한 두 가지 방식 중 상향식 다이나믹 프로그래밍 접근 방법을 사용할 때, 목록의 개수 뿐 아니라 모든 목록을 작성하도록 수정하는 방법을 정리한다.
-- 상향식 접근 방법을 사용해서 주어진 데이터로 생성 가능한 전체 목록의 수와 모든 목록을 반환하는 함수를 dp_exer/fossil2.py 파일에 구현한다.
-- 주어진 3개의 테스트케이스에 대해서 각각의 결과를 출력한다.
+- 이전 문제에서 구현한 트리 지름을 계산하는 알고리즘을 토대로 가장 먼 두 노드의 쌍을 찾는 방법을 정리한다.
+- 트리의 루트노드가 주어졌을 때, 이 트리에서 지름에 해당되는 거리에 있는 두 노드의 쌍으로 구성된 리스트를 반환하는 함수를 ds_more/tree_diameter2.py 파일에 구현한다.
+- 테스트케이스는 이전 문제와 마찬가지로 첨부 파일의 get_testcases 함수를 호출하면 7개의 테스트용 트리의 루트 노드를 얻을 수 있다. 이 7개의 트리에서 가장 먼 노드 쌍을 모두 찾아 출력한다.
 
 ## 결과 예시
 
 ```
-TC2에서 생성할 수 있는 반입 목록의 수 : 5
-TC2에서 생성할 수 있는 반입 목록 : [[1, 1, 1, 1, 1], [1, 1, 1, 2], [1, 2, 2], [1, 1, 3], [2, 3]]
-(TC1, TC3 생략)
+Testcase 1
+    트리의 지름 : 6
+    가장 먼 노드 쌍 : [(120, 160), (140, 160)]
+
+Testcase 2
+    트리의 지름 : 6
+    가장 먼 노드 쌍 : [(120, 160), (140, 160)]
+(이하 생략)
 ```
 
 ## 참고사항
@@ -481,8 +563,7 @@ TC2에서 생성할 수 있는 반입 목록 : [[1, 1, 1, 1, 1], [1, 1, 1, 2], [
 ### [수행목표 확인]
 
 - 문제에서 지시한 형식을 준수하였는가?
-  - dp/shortest_path4.py 파일에 구현이 되어 있는지 확인한다.
-  - 상향식 접근 방법으로 최단 거리와 최단 경로를 구하는 함수를 구현하였는지 확인한다.
+  - ds_more/tree_diameter2.py 파일에 구현이 되어 있는지 확인한다.
 - 제약사항을 준수하였는가?
   - 허용되지 않은 모듈, 라이브러리, 패키지의 사용 여부 (직접 구현한 경우 사용 가능하다.)
   - 입력과 무관하게 프로그램이 처리되지 않은 예외를 발생시키지 않고 정상적으로 종료되어야 한다.
@@ -491,39 +572,163 @@ TC2에서 생성할 수 있는 반입 목록 : [[1, 1, 1, 1, 1], [1, 1, 1, 2], [
   - 파이썬 3.9 이상에서 동작 여부를 확인한다.
   - 결과는 다음과 같다. 출력 형식은 평가하지 않는다.
 
-```
-    TC1에서 생성할 수 있는 반입 목록의 수 : 0
-    TC1에서 생성할 수 있는 반입 목록 : []
+    ```
+    Testcase 1
+        트리의 지름 : 6
+        가장 먼 노드 쌍 : [(120, 160), (140, 160)]
 
-    TC2에서 생성할 수 있는 반입 목록의 수 : 5
-    TC2에서 생성할 수 있는 반입 목록 : [[1, 1, 1, 1, 1], [1, 1, 1, 2], [1, 2, 2], [1, 1, 3], [2, 3]]
+    Testcase 2
+        트리의 지름 : 6
+        가장 먼 노드 쌍 : [(120, 160), (140, 160)]
 
-    TC3에서 생성할 수 있는 반입 목록의 수 : 17
-    TC3에서 생성할 수 있는 반입 목록 : [[3, 3, 3, 3, 3, 3, 3, 4], [3, 3, 3, 4, 4, 4, 4], [3, 3, 3, 3, 4, 4, 5], [4, 4, 4, 4, 4, 5], [3, 3, 3, 3, 3, 5, 5], [3, 4, 4, 4, 5, 5], [3, 3, 4, 5, 5, 5], [5, 5, 5, 5, 5], [3, 3, 3, 3, 3, 4, 6], [3, 4, 4, 4, 4, 6], [3, 3, 4, 4, 5, 6], [3, 3, 3, 5, 5, 6], [4, 5, 5, 5, 6], [3, 3, 3, 4, 6, 6], [4, 4, 5, 6, 6], [3, 5, 5, 6, 6], [3, 4, 6, 6, 6]]
-```
+    Testcase 3
+        트리의 지름 : 6
+        가장 먼 노드 쌍 : [(120, 200), (140, 200), (160, 200), (120, 160), (140, 160)]
+
+    Testcase 4
+        트리의 지름 : 7
+        가장 먼 노드 쌍 : [(120, 210), (140, 210), (160, 210)]
+
+    Testcase 5
+        트리의 지름 : 1
+        가장 먼 노드 쌍 : [(100, 200)]
+
+    Testcase 6
+        트리의 지름 : 43
+        가장 먼 노드 쌍 : [(-93, -10), (-93, -7), (-84, -10), (-84, -7)]
+
+    Testcase 7
+        트리의 지름 : 55
+        가장 먼 노드 쌍 : [(-40, 56)]
+
+    ```
 
 ### [문제에 대한 이해]
 
-- 모든 목록을 반환하기 위해서 이 목록들을 저장하는 변수의 자료형은 무엇이며 어떻게 정의하고 초기화 하였는가?
-  - 리스트를 사용한다.
-  - 생성하는 크기는 (target_value + 1)의 크기로 생성한다.
-  - 초기화 값은 cases[0]은 아무것도 반입하지 않는 경우의 빈 리스트가 존재하므로 `[[]]`로 초기화한다.
-  - 나머지 경우는 계산 전이므로 `[]`로 초기화한다.
-- 모든 목록을 반환하기 위해 구현한 알고리즘의 동작 방식을 설명하라.
-  - 경우의 수를 구할 때는 num_case에 하위 문제의 경우의 수를 더했던 부분에서
-  - 대신 현재 선택 가능한 모든 경우에 대해서,
-  - 현재 화석의 가치를 추가한 새로운 경우를 생성하고,
-  - 이를 목록 배열에 추가해 모두 취합한다.
+- 어떤 노드가 주어졌을 때 트리의 지름이 그 노드를 지나는 경우, 이 노드의 서브트리에서 가장 먼 두 노드는 어떻게 찾을 수 있을까?
+  - 왼쪽 서브트리에서 이 노드로 부터 가장 먼 노드, 즉 왼쪽 서브트리에서 가장 레벨이 큰 노드와 오른쪽 서브트리에서 이 노드로부터 가장 먼 노드, 즉 오른쪽 서브트리에서 가장 레벨이 큰 노드가 가장 먼 노드이다.
+- 어떤 노드가 주어졌을 때 트리의 지름이 그 노드를 지나지 않는 경우, 이 노드의 서브트리에서 가장 먼 두 노드는 어떻게 찾을 수 있을까?
+  - 왼쪽 서브트리에서 가장 먼 두 노드와 오른쪽 서브트리에서 가장 먼 두 노드 중 더 먼 노드이다.
 
 ### [코드 예시]
 
 ```python
+from tree_diameter_data import get_testcases
+from collections import deque
+
+def furthest_nodes(root, memo = None):
+    if not root:
+        return {}
+
+    # 1단계 - 레벨별 노드를 저장하는 딕셔너리를 생성한다.
+    # 레벨별 노드를 저장할 딕셔너리
+    level_dict = {}
+    # 루트 노드를 레벨과 함께 큐에 저장한다.
+    queue = deque([(root, 0)])
+    # 트리의 최대 레벨
+    max_level = 0
+
+    while queue:    # 큐가 빌 때까지 반복
+        node, level = queue.popleft()   # 큐의 첫번째 항목의 노드와 레벨
+
+        # 현재 레벨의 노드를 딕셔너리에 추가
+        if level not in level_dict:
+            level_dict[level] = []
+            max_level = level
+        level_dict[level].append(node)
+
+
+        # 자식 노드를 큐에 추가
+        if node.left:
+            queue.append((node.left, level + 1))
+        if node.right:
+            queue.append((node.right, level + 1))
+
+
+    # 2단계 - 상향식으로 모든 노드의 트리의 지름을 구한다.
+    diameter = {}
+    height = {}
+    farthest_child_data = {}
+    # 최대 레벨, 즉 가장 아래쪽부터 역순으로 루트까지 반복
+    for i in range(max_level, -1, -1):
+        # 각 레벨의 모든 노드에 대해서
+        for node in level_dict[i]:
+            if node.left == None:       # 왼쪽 자식 노드가 없으면
+                left_height = -1
+                left_diameter, left_diameter_pair = -1, []
+                left_farthest_child_data = [root.data]
+            else:                       # 왼쪽 자식 노드가 있으면
+                left_height = height[node.left]
+                left_diameter, left_diameter_pair = diameter[node.left]
+                left_farthest_child_data = farthest_child_data[node.left]
+            if node.right == None:      # 오른쪽 자식 노드가 없으면
+                right_height = -1
+                right_diameter, right_diameter_pair = -1, []
+                right_farthest_child_data = [root.data]
+            else:                       # 오른쪽 자식 노드가 있으면
+                right_height = height[node.right]
+                right_diameter, right_diameter_pair = diameter[node.right]
+                right_farthest_child_data = farthest_child_data[node.right]
+
+
+            # 높이와 지름을 계산하면서 가장 먼 자손 노드의 데이터도 저장한다.
+            if left_height > right_height:
+                height[node] = 1 + left_height
+                farthest_child_data[node] = left_farthest_child_data
+            elif left_height < right_height:
+                height[node] = 1 + right_height
+                farthest_child_data[node] = right_farthest_child_data
+            else:   # 왼쪽과 오른쪽의 높이가 같은 경우, 양쪽의 가장 먼 자손 노드의 데이터를 합친다.
+                height[node] = 1 + left_height
+                farthest_child_data[node] = left_farthest_child_data + right_farthest_child_data
+
+            if height[node] == 0:
+                farthest_child_data[node] = [node.data]
+
+            diameter_current_node = left_height + right_height + 2
+            diameter_from_child = max(left_diameter, right_diameter)
+
+            if diameter_current_node >= diameter_from_child:
+                # 트리의 지름이 현재 노드를 지나는 경우
+                combi = []
+                # 왼쪽 서브 노드에서 가장 먼 노드와 오른쪽 서브 노드에서 가장 먼 노드의 쌍을 구한다.
+                for left_data in left_farthest_child_data:
+                    for right_data in right_farthest_child_data:
+                        combi.append((left_data, right_data))
+                # 이 값이 왼쪽 자식 노드의 트리의 지름과 같은 경우
+                if diameter_current_node == left_diameter:
+                    combi += left_diameter_pair
+                if diameter_current_node == right_diameter:
+                    combi += right_diameter_pair
+                diameter[node] = (diameter_current_node, combi)
+            elif left_diameter > right_diameter:
+                # 왼쪽 자식 노드의 트리의 지름이 더 큰 경우
+                diameter[node] = (left_diameter, left_diameter_pair)
+            elif left_diameter < right_diameter:
+                # 오른쪽 자식 노드의 트리의 지름이 더 큰 경우
+                diameter[node] = (right_diameter, right_diameter_pair)
+            else: # 횐쪽 자식 노드와 오튼쪽 자식 노드의 트리의 지름이 같은 경우
+                diameter[node] = (left_diameter, left_diameter_pair + right_diameter_pair)
+    return diameter[root]
+
+def main():
+
+    testcases = get_testcases()
+    for i, tc in enumerate(testcases):
+        tree_diameter, furthest_node_pairs = furthest_nodes(tc)
+        print(f"Testcase {i + 1}")
+        print(f"    트리의 지름 : {tree_diameter}")
+        print(f"    가장 먼 노드 쌍 : {furthest_node_pairs}")
+        print()
+
+if __name__ == "__main__":
+    main()
 
 ```
 
 ---
 
-# 문제 5. 최대 서브 트리 합
+# 문제 5. 가장 강한 서브트리
 
 ## 문제 분류
 
@@ -533,42 +738,39 @@ TC2에서 생성할 수 있는 반입 목록 : [[1, 1, 1, 1, 1], [1, 1, 1, 2], [
 
 ## 스토리
 
-E 연구원은 그룹장의 명령만 수행하는 수동적인 연구원은 아니고, 본인의 고유한 연구 주제를 가지고 있었다. 그는 진화생물학을 전공했지만, 오늘날 여러 이론의 발전으로 각 분야의 연구가 서로에게 도움이 되다 보니, 진화생물학에 DNA 구조 분석을 접목하는 접근 방법을 찾고 있었다.
+연구원들은 수 년에 걸쳐 연구하고 있는 신기한 유전자 상의 돌연변이가 있었다. '유라'라는 이름을 가진 동물의 특정한 종에서만 발견되는 돌연변이인데, 이 돌연변이 유전자는 특정 성별에서만 발생하고, 해당 성별의 자손으로만 전파되며, 게다가 자식 중 딱 두 마리까지만 전달된다는 독특한 성질 때문에 연구소에서 이 돌연변이에 초점을 맞추어 연구를 진행하고 있었다. 연구를 통해 이 돌연변이 유전자가 실제로 발현되는데 영향을 미치는 어떤 물질을 발견했는데, 이 물질의 양은 직접 측정할 수 없고, 대신 일종의 전압을 측정하는 것과 유사한 방법으로 측정을 할 수 있었기에 이 값은 양수, 음수, 그리고 0 어떤 부호의 값이든 가질 수 있었다. 이 값을 연구소에서는 '반응도 전압'이라고 불렀다.
 
-E 연구원은 본인이 발견한, 아니 발견했다고 주장하는 이론이 있다. 그런데, 그 이론을 검증하려면 복잡한 계산이 필요한데, 다이나믹 프로그래밍의 개념을 접하자, 그 문제도 다이나믹 프로그래밍으로 풀 수 있다는 사실을 알게 되었다. 그의 이론은 다음과 같다.
+연구팀은 이 돌연변이가 발생한 유라 개체를 루트 노드로 하고, 이 돌연변이 유전자가 전달된 자손들을 부모와 자식을 연결한 가계도의 형태로 표현한 후, 이 가계도에 포함된 모든 유라의 반응도 전압을 측정한 후, 가계도 안에 값을 기록했다. 이 가계도를 여러 개를 그려놓고 지켜보던 연구원들은, 이 가계도에서 반응 전압이 유달리 높은 일부분이 있음을 직관적으로 알게 되었다. 그 가계도의 일부분에 해당하는 유라의 개체에 실제로 해당 돌연변이의 형질이 발현되었는지를 확인하고 싶은데, 문제는 일부 가계도는 너무 크고 복잡해서 이를 확인하기가 싶지 않다는 것이었다.
 
-> - 특별한 종의 미생물들은 유전자 염기서열은 몇 개의 패턴으로만 중첩 없이 구성되며, 이 특징으로 특정 진화의 갈래를 확인할 수 있다는 것이었다. 예를 들어서 CTAGC와 TAGGCT 두 개의 염기서열 패턴만으로 구성되는 예제는 다음과 같다.
->   - CTAGC, TAGGCT (패턴 그 자체)
->   - CTAGCT-TAGGCT, TAGGCT-CTAGC, CTAGC-CTAGC-TAGGCT-CTAGC (패턴들의 조합)
-> - 다음은 여기에 해당되지 않는 예제이다.
->   - C-TAGGCT-AGCA-TAGGCT (해당 패턴이 포함되어는 있지만, 해당 패턴 만으로 구성되지 않음)
->   - TAGG-CT-AGC (TAGGCT, CTAGC가 포함되어 있지만, 중첩되어 있다.)
+연구원들이 지선생을 찾아가 이 가계도에서 그런 부분을 찾아줄 수 있느냐고 묻자, 지선생은 이렇게 말했다.
 
-이 이론을 검증하기 위해서 실제 어떤 유전자가 특정 패턴으로만 구성되어 있는지 확인해야 하는데, 이 문제가 어려운 이유는 간단한 미생물 정도만 해도 몇 백만에서 천만 정도의 길이에 달할 정도로 유전자 염기서열이 길다는 것이었다. 이 중 1% 정도만 샘플링해서 조사한다 해도 1만 정도의 길이가 된다. 연구원 L은 유전자 염기 서열에서 1만 이하의 길이를 가지는 부분을 샘플링해서 테스트 작업을 시작하고 있는 중이었다.
+“이 가계도 위의 각각의 유라의 개체로부터 그 모든 자손들의 반응도 전압을 다 합쳤을 때, 그 값이 최대가 얼마인지 찾으면 되지 않을까요?”
+
+그 말을 들은 연구원들은 되물었다.
+
+“그런데, 그 값을 어떻게 찾지요?”
 
 ## 수행목표
 
-- E 연구원이 풀어야 하는 문제는 다음과 같다.
-  - 패턴은 C, T, A, G 네 글자가 조합된 문자열로 주어진다.
-  - 주어진 문자열이 지정된 패턴 만으로 중첩없이 구성되어 있는지를 검사하고, 결과에 따라 True 또는 False를 반환한다.
-- E 연구원이 풀어야 하는 문제를 해결해주는 함수를 구현한다.
-- 다음은 검사할 패턴(patterns 리스트)과 테스트 대상 DNA 염기 서열(문자열)들이 기재되어 있다. 11개의 DNA 염기 서열에 대해서 해당 염기 서열이 검사할 패턴 만으로 중첩 없이 구성되어 있는지 검사한 결과를 출력한다.
-  ```python
-  patterns = ['CTAG', 'GCC', 'CTA']
-  test1 = "CTAG"
-  test2 = "GCCCTACTAG"
-  test3 = "CCCCCCCCCC"
-  test4 = "GTTTCAGGGA"
-  test5 = "CTAGCTAGCC"
-  test6 = "CTACTAGCTAGCC"
-  test7 = "ACCAGAGTCTCTCCTCTTAC"
-  test8 = "GCCCTACTAGCCCTAGCTAGCCCTAGGCCCTAGCCCTAGCCGCCGCCCTACTAGCCCTACTA"
-  test9 = "GCCCTAGCTAGCTAGCCGCCGCCCTACTACTAGCCGCCGCCTAGCCGCCCTACTACTAGGCCCTAG"
-  test10 = "CTAGCTACTACTAGCTAGCTAGCTAGCTAGCTACTAGCTACTAGCTAGCCCTAGCTACTAGCTAGCTAGCTAGCTAGGCCGCCCTAGCTAGGCCGCCCTAGCTAGCTAGGCCGCCCTAGCTAGGCCGCCCTAGCTAGCTAGCTACTAGCTACTAGCTAGCCGCCCTAGCCCTACTAG"
-  test11 = "GCCCTAGCTACTAGCTAGCTAGCCGCCCTACTAGGCCGCCCTACTACTAGGCCGCCGCCCTAGCTAGGCCGCCCTACTAGCTACTAGCTAGCTACTAGCTACTAGCTACTAGGCCGCCCTACTAGGCCCTACTAGGCCCTAGCCGCCCTAGCTAGGCCGCCCTACTAGGCCCTACTACTAGGCCCTAGCTACTAGCTAGGCCCTAGGCCGCCCTAGGCCCTACTACTACTAGCCGCCGCCCTACTAGGCCCTACTACTAGCCCTAGGCCCTAGCTAGCTACTAGCCGCCCTAGCTAGGCCGCCGCCGCCCTAGGCCGCCCTAGCCGCCCTACTACTACTACTAGCTACTACTAGCTAGCTACTAGCTACTAGGCCGCCGCCGCCCTACTAGGCCCTACTAGCTACTAGCCCTACTACTACTACTAGCCGCCGCCCTAGCTAGCCGCCCTAGGCCCTACTACTACTAGCCGCCCTAGGCCCTACTAGCCCTAGGCCCTAGCCCTAGCTAGCCCTAGCTAGCTAGCCGCCCTACTACTAGCTACTAGCTAGCTAGCTAGGCCCTAGCTAGGCCGCCGCCCTAGGCCCTACTAGCTAGCCGCCCTACTAGGCCGCCCTAGCTAGCCCTAGCCCTAGCCGCCCTAGCTAGCTACTAGCCCTACTAGCTAGCTAGCCCTACTAGCTACTAGCTAGCCCTACTACTAGCCCTACTAGCTACTACTAGCCCTAGGCCCTAGGCCCTAGCTACTACTAGGCCGCCGCCCTACTAGCCGCCGCCCTAGGCCCTACTACTAGGCCGCCGCCCTAGCTAGCCCTAGGCCCTAGCTAGGCCCTAGCCCTACTAGGCCCTAGCTAGCTAGCTAGGCCGCCCTAGCTAGCTAGCCGCCGCCGCCCTAGCCCTAGGCCCTAGCTAGCCGCCGCCCTAGCCCTAGCCGCCCTACTAGCTAGCTACTACTAGCTAGCTACTAGCTACTAGCTAGCCCTAGCCCTAGGCCGCCGCCGCCCTAGCCCTACTACTACTAGCCCTAGGCCCTACTAGCTAGGCCGCCCTAGCCCTAGCTAGCTAGCTAGCTACTACTAGGCCCTAGCTAGCCCTAGGCCGCCCTACTAGCTAGCTACTAGCTAGCTAGCTAGCCGCCCTAGGCCGCCCTAGCCCTAGGCCGCCGCCCTACTACTAGCCCTACTACTAGCTACTAGCTAGCTACTAGCTAGCTAGGCCCTACTAGCTACTAGCCCTAGCTAGCTAGCCCTAGCTAGGCCCTAGCCCTACTAGCCGCCCTAGCCGCCCTACTAGGCCGCCCTAGCTACTAGCTAGCTACTACTAGCCCTAGCCGCCGCCGCCCTACTAGCTAGGCCGCCGCCGCCCTAGCTAGCCCTACTAGCTAGCTAGCTAGCTAGCTAGGCCGCCCTAGCTAGCCCTACTAGCTACTAGGCCCTAGCTACTAGCCCTAGGCCCTACTACTAGCTACTAGCTAGCCCTACTAGCTAGCTAGCCCTAGCTACTAGGCCCTACTAGCTAGCTAGCCCTACTAGCTAGCTACTAGCCCTAGCTAGCTACTAGCCCTAGGCCGCCGCCCTAGCCCTAGCTACTAGCTAGCTAGCTACTAGCTAGCTAGCTAGCCCTACTACTACTAGCCGCCCTAGCTACTACTACTAGCCCTAGCTAGCTAGCCCTACTACTACTAGCTAGCCCTACTAGCTAGCCGCCCTAGCTAGCTAGCTACTAGCCCTACTAGCCCTACTACTAGCTACTAGGCCCTAGGCCGCCCTAGCCCTAGGCCCTACTAGCTACTACTAGCTAGCTAGGCCGCCCTACTACTACTACTAGCTACTACTAGCTAGCTAGCCGCCCTAGCTAGGCCGCCGCCCTAGCTAGCTAGCTAGCTAGCTAGCTACTAGCTAGCTACTAGCTACTAGCCCTAGCTAGCTAGCTAGCTACTAGCTACTAGCTACTAGCCCTAGCCCTAGGCCGCCGCCGCCCTAGCTAGGCCCTAGCTAGCCGCCCTACTAGGCCCTAGCTAGCTACTAGGCCGCCGCCCTACTAGCTAGGCCGCCCTACTAGGCCCTAGCCCTACTAGCTACTAGCCGCCCTACTAGGCCCTAGCTAGCTACTAGCTACTACTAGCCGCCCTAGCCCTAGCTACTAGCTAGCCCTACTACTAGCTAGCTACTAGCTACTAGCCCTACTACTAGCCCTAGCTACTAGGCCCTAGCCGCCCTAGCCCTACTAGGCCGCCCTACTACTAGCCGCCCTACTAGGCCCTAGCTAGCTACTAGCTAGCCCTACTACTAGCTACTAGGCCCTAGCTACTAGCCCTAGCTACTAGCTAGCTAGGCCCTAGCTAGCTAGCTAGCTACTAGCTACTAGCTAGCTAGGCCCTACTAGCTACTAGGCCCTAGCTAGCCGCCCTAGCTAGCTAGCCCTAGCTAGGCCGCCGCCGCCCTACTAGCTACTACTAGCTAGCCGCCCTACTAGCCCTAGCTACTACTAGCTAGGCCGCCCTAGGCCCTACTAGCCCTAGCCCTACTAGCTAGGCCGCCCTAGGCCCTACTACTAGGCCGCCGCCCTACTAGCTAGCTAGCTAGCTAGCCCTACTAGGCCCTAGCCCTAGGCCCTACTACTAGCTAGCTACTACTAGGCCCTAGGCCCTACTAGCTAGCTACTAGCTAGGCCCTAGCTAGCTAGGCCCTAGCTACTAGCCGCCCTAGCTAGCTAGCCCTACTAGGCCCTAGGCCGCCCTACTAGCTAGCCGCCGCCCTAGGCCGCCCTAGCTACTAGCTAGCCGCCCTAGCTAGCTAGCCCTACTAGGCCCTAGCTAGCTAGCTAGGCCCTACTACTACTAGCCCTAGCTAGGCCCTACTAGCTACTAGCTACTAGGCCCTAGCCCTAGGCCGCCCTAGCTACTACTACTAGCCCTAGCTAGGCCCTAGCTAGCTAGCTACTACTAGCCGCCCTACTAGCCCGATTAGCTACTAGGCCGCCCTACTAGCTAGCTAGCTACTAGCTAG"
-  ```
+- 이진 트리 내부에 포함된 각 노드마다 해당 노드를 루트로 하는 서브트리를 하나씩 정의할 수 있으므로, 이진 트리에는 노드의 수 만큼의 서브트리가 존재한다.
+- 이진 트리에 실수의 값을 가지는 변수가 있다. 서브트리마다 이 변수의 합을 구할 수 있다. 노드 수 만큼의 서브트리의 변수의 합 중 최대값을 반환하는 함수를 구현한다.
+- 첨부한 파일을 사용해서 8개의 테스트케이스를 얻을 수 있다. 각 테스트케이스에서 가장 큰 서브트리 합을 구해서 출력해보자.
 
 ## 수행단계
+
+- 다음 그림의 트리와 질문을 통해서 문제를 파악해보자.
+  ![Alt text](ch7_3.png)
+  - 트리에 포함된 모든 노드의 값의 합은 얼마인가?
+  - 루트 노드의 왼쪽 자식 노드를 루트 노드로 하는 서브 트리의 모든 노드의 값의 합은 얼마인가?
+  - 루트 노드의 오른쪽 자식 노드를 루트 노드로 하는 서브 트리의 모든 노드의 값의 합은 얼마인가?
+  - 이 트리에서 합이 가장 큰 서브트리의 루트는 무엇이고, 합의 값은 얼마인가?
+  - 반대로 트리에서 합이 가장 작은 서브트리의 루트는 무엇인가?
+- 주어진 문제를 해결하기 위해서 우선 특정 노드를 루트로 하는 서브트리의 모든 값의 합을 구하는 문제를 해결해보자. 이 문제는 문제의 구조를 파악해 해결한다.
+  - 상위 구조와 하위 구조를 정의해보자.
+  - 상위 구조와 하위 구조의 관계를 찾아 점화식의 형태로 정리해보자.
+- 서브트리의 모든 값의 합을 구하는 문제를 사용해, 합이 최대인 서브트리의 합을 구하는 방법을 정리한다.
+- 정리한 내용을 토대로 합이 최대인 서브트리의 합을 구하는 함수를 ds_more/max_power_subtree.py 파일에 구현한다.
+-
 
 - 문제의 구조를 분석하고, 문제를 해결하기 위한 하향식 접근법과 상향식 접근법을 각각 정리한다.
 - dp_exer/simple_dna.py 파일에 주어진 문자열이 패턴 만으로 중첩없이 구성되어 있는지를 검사해 그 결과를 반환하는 함수를 구현한다.
