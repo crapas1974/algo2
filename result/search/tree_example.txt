@@ -1,0 +1,75 @@
+Testcase 1
+Ol,b0
+olr,c1
+O,a0
+Orl,c2
+Or,b1
+Oll,c0
+Orr,c3
+Testcase 2
+Olll,d0
+O,a0
+Ol,b0
+Oll,c0
+Ollll,e0
+Testcase 3
+O,a0
+Ol,b0
+Or,b1
+Oll,c0
+olr,c1
+Orl,c2
+Orr,c3
+Testcase 4
+Ol,a0
+O,b0
+Testcase 5
+Orrrr,e0
+O,a0
+Or,b0
+Orr,c0
+Orrr,d0
+Testcase 6
+Olrllr,f0
+Olrll,e0
+Olrl,d0
+oll,c0
+Olr,c1
+Ol,b0
+O,a0
+Testcase 7
+Olll,vvzjj
+Oll,ldvqa
+Ollrr,jyceo
+Ollrll,nrcea
+Ollrl,sbipf
+O,kktyu
+Ollrrlr,aamsj
+Olrr,xumez
+Ollr,yocpl
+Olrrll,finwu
+Olrl,bwoyf
+Ollrrlrl,gkovq
+Ollrrlrlr,qogdc
+Olrll,xvqmn
+Olr,qdtnk
+Ollrllr,rnyca
+Ollrrl,makze
+Olrrl,xezbf
+Ol,oneuf
+Olrrlr,eqeim
+Testcase 8
+Olrl,vtsax
+Oll,bwxcx
+Olrrrrll,lxmyj
+Olrrrrllr,hwfbq
+Ollr,jfwcf
+Olr,xlzxf
+Olrrr,nvfks
+O,yhmlh
+Olrrrrl,wffda
+Olrr,qmyrz
+Olrrrr,sikha
+Olrll,ppjnh
+Ollrr,cecnh
+Ol,vdjmg

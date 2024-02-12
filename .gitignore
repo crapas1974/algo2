@@ -1,1 +1,5 @@
 .DS_Store
+result/search/__pycache__/element_x.cpython-310.pyc
+result/search/__pycache__/neurons_v.cpython-310.pyc
+result/algorithm/__pycache__/find_complexity_tc.cpython-310.pyc
+result/algorithm/__pycache__/sort_data.cpython-310.pyc

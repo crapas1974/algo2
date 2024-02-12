@@ -14,22 +14,25 @@ def segmentations(arr, prefix_list = None, result = None):
     return result
 
 import hashlib
-def hash4(input):    
-    return hashlib.sha256(input.encode()).hexdigest()[:4]
+def hash4(result: list):
+    sorted_result = sorted(result)
+    print(sorted_result)
+    return hashlib.md5(str(result).encode()).hexdigest()[:4]
 
-def c2h4(arr):
-    arr.sort()
-    result = ''
-    for mid_list in arr:
-        result += '_'
-        for inner_list in mid_list:
-            result += '='
-            for element in inner_list:
-                if isinstance(element, int):
-                    result += chr((element % 26) + 65) + ','
-                else:
-                    result += element + ','
-    return hash4(result)
+# def c2h4(arr):
+#     arr.sort()
+
+#     result = ''
+#     for mid_list in arr:
+#         result += '_'
+#         for inner_list in mid_list:
+#             result += '='
+#             for element in inner_list:
+#                 if isinstance(element, int):
+#                     result += chr((element % 26) + 65) + ','
+#                 else:
+#                     result += element + ','
+#     return hash4(result)
 
 def counts_per_segment(arr):
     segment_count = {}

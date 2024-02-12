@@ -35,10 +35,16 @@ def make_random_seq(size, vocab = None):
         seq += random.choice(vocab)
     return seq
 
-print(make_random_seq(50))
+#print(make_random_seq(50))
 vocab = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-print(make_random_seq(1000, vocab))
+#print(make_random_seq(1000, vocab))
 #make_random_graph(200, 10000, 100, 150)
 # 52C2
 # 100C2 
 # 150C2=
+for _ in range(1000):
+    print(make_random_seq(4))
+for _ in range(20):
+    for _ in range(10):
+        print(make_random_seq(4), "-")
+    print("print")
