@@ -115,7 +115,7 @@ def main():
         # print(f"    최소 이동 경로 : {' -> '.join(path_str)}")
         # print()
     
-    tc = make_maze(900)
+    tc = make_maze(500)
     start = time.time()
     min_time = find_min_time(len(tc) - 1, tc)
     end = time.time()
