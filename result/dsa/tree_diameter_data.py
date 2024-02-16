@@ -1,22 +1,10 @@
+import random
 
 class BTreeNode:
     def __init__(self, data):
         self.data = data
         self.left = None
         self.right = None
-
-    # def insert_child(self, l_or_r, node):
-    #     if l_or_r == 0:
-    #         if self.left != None:
-    #             return False
-    #         self.left = node
-    #     elif l_or_r == 1:
-    #         if self.right != None:
-    #             return False
-    #         self.right = node
-    #     else:
-    #         return False
-    #     return True
     
 def build_binary_tree(input_str):
     if not input_str:
@@ -55,5 +43,11 @@ def get_testcases():
     tree5_root = build_binary_tree(tree5_data)
     tree6_root = build_binary_tree(tree6_data)
     tree7_root = build_binary_tree(tree7_data)
+    tree8_root = None
+    for _ in range(100000):
+        if tree8_root == None:
+            tree8_root = BTreeNode(random.randint(0, 10000))
+        else:
+            insert_by_value(tree8_root, random.randint(0, 10000))
 
-    return [tree1_root, tree2_root, tree3_root, tree4_root, tree5_root, tree6_root, tree7_root]
+    return [tree1_root, tree2_root, tree3_root, tree4_root, tree5_root, tree6_root, tree7_root, tree8_root]
