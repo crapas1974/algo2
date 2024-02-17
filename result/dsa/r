@@ -1,0 +1,198 @@
+Testcase 1
+True
+(4, 5)
+Testcase 2
+False
+(4, 4)
+Testcase 3
+True
+(1, 1)
+Testcase 4
+False
+(9, 9)
+Testcase 5
+False
+(19, 21)
+Testcase 6
+False
+(85, 75)
+Testcase 7
+False
+(427, 281)
+ADd UB 
+ADd NW 
+ADd EE 
+ADd ZF 
+ADd QW 
+ADd HO 
+ADd UJ 
+ADd VO 
+ADd JC 
+ADd XG 
+ADd TN 
+ADd XM 
+ADd EB 
+ADd KL 
+ADd VT 
+ADd FJ 
+ADd PR 
+ADd HK 
+ADd CD 
+ADd EC 
+ADd TX 
+ADd LC 
+ADd GK 
+ADd PA 
+ADd OR 
+ADd GW 
+ADd NM 
+ADd NC 
+ADd EQ 
+ADd HU 
+ADd HS 
+ADd QS 
+ADd JP 
+ADd PI 
+ADd AW 
+ADd FR 
+ADd OK 
+ADd MZ 
+ADd WS 
+ADd EA 
+ADd TI 
+ADd SP 
+ADd NV 
+ADd NT 
+ADd NY 
+ADd VP 
+ADd QO 
+ADd TW 
+ADd SI 
+ADd RV 
+ADd YA 
+ADd HB 
+ADd ZT 
+ADd OL 
+ADd WX 
+ADd RY 
+ADd AU 
+ADd EF 
+ADd MT 
+ADd PN 
+ADd EH 
+ADd CI 
+ADd JK 
+ADd BC 
+ADd BF 
+ADd LB 
+ADd RT 
+ADd QZ 
+ADd YD 
+ADd YV 
+ADd JW 
+ADd IY 
+ADd MX 
+ADd RX 
+ADd LS 
+ADd KX 
+ADd LN 
+ADd XZ 
+ADd NE 
+ADd TU 
+ADd CQ 
+ADd GQ 
+ADd TO 
+ADd IM 
+ADd UW 
+
+
+Testcase
+IM,RV
+IM,RT
+IM,JC
+TI,FR
+TI,QS
+TI,XM
+TI,NM
+NM,TX
+NM,IM
+NM,YD
+TX,AU
+EH,NM
+HK,TI
+HK,BC
+HK,EE
+HK,KX
+KL,QO
+KL,TI
+QO,OK
+QO,TW
+QO,MX
+QO,NT
+QW,WS
+QW,GW
+WS,HS
+PR,SI
+PR,XM
+PR,CQ
+PR,GQ
+SI,NW
+MX,EH
+MX,FJ
+MX,XM
+MX,UW
+AU,TI
+AU,XM
+XZ,IY
+XZ,YD
+IY,NE
+IY,LC
+IY,HU
+OL,TW
+TW,RV
+EA,NE
+EA,XM
+RY,LB
+CD,AU
+OK,XZ
+OK,HB
+OK,MZ
+FJ,RX
+FJ,XZ
+BC,WS
+XM,LB
+EB,HO
+HU,NE
+NT,IM
+JK,VT
+HS,LS
+EQ,NV
+UW,YV
+YV,TO
+YV,NE
+UB,WS
+UB,TO
+UB,IM
+VO,NE
+VO,QW
+VO,XZ
+YD,MZ
+MZ,YA
+MZ,NY
+JC,HS
+GQ,JK
+AW,MZ
+PA,WX
+WX,HS
+JW,JK
+NY,LN
+TN,AW
+EF,YV
+ZF,HB
+ZF,WX
+GK,LN
+EC,EQ
+End Testcase
+
+
+True
